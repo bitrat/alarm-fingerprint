@@ -51,5 +51,7 @@ process_signals.py – select signal processing options from menu. looks in dire
 Captured signals files are processed from the Captured directory. If an alarm signal is positively identified:
 
 Move .cap original captured signal file into AlarmSignals/Original directory.
+
 Move .dat processed signal file into AlarmSignals/Processed directory. (Optional)
+
 Create log file, in AlarmSignals/logs directory, to record what alarm, alarm peripheral signal captured.
