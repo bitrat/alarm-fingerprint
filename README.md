@@ -9,7 +9,7 @@ This project contains proof of concept code, which automates blackbox wireless a
 
 GENERAL DESCRIPTION FOR RUNNING THE CODE
 
-(Refer to Equipment setup documentation)
+(Refer to Equipment setup documentation for how to glue this all together = hardware + software)
 
 Create the AlarmGnuradioFiles folder in your user directory. Place scripts in this directory.
 
