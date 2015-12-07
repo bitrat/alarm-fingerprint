@@ -8,7 +8,8 @@ In a field/real world setting however, this is not so easy. A way of being able 
 This project contains proof of concept code, which automates blackbox wireless alarm signal identification and storage.
 
 GENERAL DESCRIPTION FOR RUNNING THE CODE
-(refer to Equipment setup and How to add an alarm documentation for further details)
+
+(Refer to Equipment setup documentation)
 
 Create the AlarmGnuradioFiles folder in your user directory. Place scripts in this directory.
 
