@@ -42,7 +42,9 @@ Capture signal – Example DSC Alexor signals onto Local harddrive
 capture_signals.py – select signal capture options from menu.
   - starts run_capture_flowgraph_433920000_local script
   - runs puresignal_435720000MHz.py flowgraph, captures signals every 30 seconds, saves .cap files into a directory.
-Note: Needed to use timeout in run_capture_flowgraph_433920000_local script at the moment ,because wait() and stop() didn't work in .grc flowgraph code. (Could possibly do this with GnuRadio Block message passing). Process signal description
+Note: Needed to use timeout in run_capture_flowgraph_433920000_local script at the moment ,because wait() and stop() didn't work in .grc flowgraph code. (Could possibly do this with GnuRadio Block message passing). 
+
+Process signal description
 
 process_signals.py – select signal processing options from menu. looks in directory for .cap files (captured files) and passes them to :
 - run_addconst_flowgraphs script, which will run the .cap files through different offsets (-0.25 to -0.9 in -0.05 steps using
