@@ -47,7 +47,7 @@ Note: Needed to use timeout in run_capture_flowgraph_433920000_local script at t
 Process signal description
 
 process_signals.py – select signal processing options from menu. looks in directory for .cap files (captured files) and passes them to :
-- run_addconst_flowgraphs script, which will run the .cap files through different offsets (-0.25 to -0.9 in -0.05 steps using
+- run_addconst_flowgraphs script, which will run the .cap files through different offsets (-0.25 to -0.9 in -0.05 steps). Uses .py file :
 - DSC_FileInput_To_BinarySlice_Local_only.py, which processes .cap captured signal file into Binary Sliced values (4DSC_SampSym file for processing further)
 - Use Don Weber’s grc_bit_converter.py file (process signal into hex values).
 - process_alarm_hex_auto.py (detects alarm signal preamble)
