@@ -26,8 +26,10 @@ Create the following subdirectories:
   
 The following is a description of the current python files, GNURadio files and order of processing (described for the DSC Alexor alarm, processed on local PC hard drive).
 
-Scripts overview Example – DSC Alexor alarm, local drive 
+Scripts overview Example – DSC Alexor alarm, local drive
+
 ./capture_signals.py
+
 ./ process_signals.py 
    - run_addconst_flowgraphs 
    - DSC_FileInput_To_BinarySlice_Local_only.py 
