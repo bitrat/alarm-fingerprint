@@ -7,6 +7,12 @@ In a field/real world setting however, this is not so easy. A way of being able 
 
 This project contains proof of concept code, which automates blackbox wireless alarm signal identification and storage.
 
+Alarm components:
+- Spectra 4000 with both RX1 and RTX3 wireless modules, DCT2 reeds, PMD75 PIR and REM15 keyfobs.
+- DSC Alexor wireless alarm system,WS4945A reeds, WS4904 PIR and WS4939 keyfobs.
+- Bosch 3000 with B810 wireless module, RFDW-SM reeds, RF940E PIR and RFKF-FB keyfobs.
+- Yale standard wireless alarm system.
+
 GENERAL DESCRIPTION FOR RUNNING THE CODE
 
 (Refer to Equipment setup documentation for how to glue this all together = hardware + software)
