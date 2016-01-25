@@ -8,16 +8,19 @@ In a field/real world setting however, this is not so easy. A way of being able 
 This project contains proof of concept code, which automates blackbox wireless alarm signal identification and storage.
 
 Alarm components:
-- Spectra 4000 with both RX1 and RTX3 wireless modules, DCT2 reeds, PMD75 PIR and REM15 keyfobs.
+- Spectra 4000 with both RX1 and RTX3 wireless modules, DCT2 reeds, PMD75 PIR, REM15 and REM3 keyfobs.
 - DSC Alexor wireless alarm system,WS4945A reeds, WS4904 PIR and WS4939 keyfobs.
 - Bosch 3000 with B810 wireless module, RFDW-SM reeds, RF940E PIR and RFKF-FB keyfobs.
 - Yale standard wireless alarm system.
+
+Test alarm signals (to verify you have set the processing code up correctly, can be downloaded from https://drive.google.com/folderview?id=0B8gCZryoEOWIZDBsbVFVZF93dW8&usp=sharing ).
+These .cap files must be placed in the Captured folder (see Folder structure below)
 
 GENERAL DESCRIPTION FOR RUNNING THE CODE
 
 (Refer to Equipment setup documentation for how to glue this all together = hardware + software)
 
-Create the AlarmGnuradioFiles folder in your user directory. Place scripts in this directory.
+Create the AlarmGnuradioFiles folder in your user directory. Place the scripts in this directory.
 
 Create the following subdirectories:
 
@@ -29,6 +32,7 @@ Create the following subdirectories:
   - Captured
   - conf
   - init
+  scripts (place in AlarmGnuRadioFiles root directory)
   
 The following is a description of the current python files, GNURadio files and order of processing (described for the DSC Alexor alarm, processed on local PC hard drive).
 
