@@ -14,6 +14,7 @@ Alarm components:
 - Yale standard wireless alarm system.
 
 Test alarm signals (to verify you have set the processing code up correctly, can be downloaded from https://drive.google.com/folderview?id=0B8gCZryoEOWIZDBsbVFVZF93dW8&usp=sharing ).
+
 These .cap files must be placed in the Captured folder (see Folder structure below)
 
 GENERAL DESCRIPTION FOR RUNNING THE CODE
@@ -32,6 +33,7 @@ Create the following subdirectories:
   - Captured
   - conf
   - init
+  
   scripts (place in AlarmGnuRadioFiles root directory)
   
 The following is a description of the current python files, GNURadio files and order of processing (described for the DSC Alexor alarm, processed on local PC hard drive).
