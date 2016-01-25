@@ -605,6 +605,12 @@ def device_status(deviceData, alarmIdentified, hexPacketData):
                 auto_logger.info(status_console)
                 status_output.append(status)
                 return spectra_status[0], status_output
+            elif spectra_status[0] == '100100100110110100100100':
+                status_console = "-----------------------------------------------------------\nSpectra REM3 Keyfob Signal Detected.\n-----------------------------------------------------------"
+                status = "-----------------------------------------------------------\n------------------------------ Spectra REM3 Keyfob Signal Detected.\n-----------------------------------------------------------------------------------------"
+                auto_logger.info(status_console)
+                status_output.append(status)
+                return spectra_status[0], status_output
 
             # Unlock - bits 21 to 24 in common 
             elif spectra_status_last4bits == '100110100110':
