@@ -13,7 +13,7 @@ Alarm components:
 - Bosch 3000 with B810 wireless module, RFDW-SM reeds, RF940E PIR and RFKF-FB keyfobs.
 - Yale standard wireless alarm system.
 
-Test alarm signals (to verify you have set the processing code up correctly, can be downloaded from https://drive.google.com/folderview?id=0B8gCZryoEOWIZDBsbVFVZF93dW8&usp=sharing ).
+Test alarm signals (to verify processing code has been setup up correctly, can be downloaded from https://drive.google.com/folderview?id=0B8gCZryoEOWIZDBsbVFVZF93dW8&usp=sharing ).
 
 These .cap files must be placed in the Captured folder (see Folder structure below)
 
