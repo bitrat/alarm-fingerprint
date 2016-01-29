@@ -1,0 +1,28 @@
+#!/bin/bash
+
+lowlimit=35000000
+filesystem="/media/user/SDRAlarmSignals"
+
+for fs in $filesystem
+  do
+  # User hits Control+Z to exit
+    while :
+       do
+         size=`df -k $fs | grep $fs | awk '{print $4}'`
+         # Set this the size of how many total Add Const signals you will have per (currently ~
+         if [ $size -le $lowlimit ]
+         then
+           echo "WARNING: Low disk space for $fs ($size)"
+           break
+         else  
+           echo "---------------------------------------"
+           echo "  Capture loop - 30 second intervals" 
+           echo "[PRESS CONTROL+ALT+X TO STOP CAPTURING]"
+           echo "---------------------------------------"
+           # Offset Gnuradio capture flowgraph
+           timeout 30s python puresignal_434320000MHz_external.py
+         fi
+       done
+  done
+
+

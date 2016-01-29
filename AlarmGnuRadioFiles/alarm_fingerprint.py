@@ -612,6 +612,7 @@ def device_status(deviceData, alarmIdentified, hexPacketData):
                 status_output.append(status)
                 return spectra_status[0], status_output
 
+
             # Unlock - bits 21 to 24 in common 
             elif spectra_status_last4bits == '100110100110':
                 status_console = "-----------------------------------------------------------\nSpectra REM15 Keyfob Unlock Button Signal Detected.\n-----------------------------------------------------------"

@@ -6,9 +6,9 @@ import subprocess
 import sys
 import itertools
 
-runCapture_433920000_local = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_433920000_local')
+runCapture_433920000_local = os.path.join(os.path.sep, os.environ['HOME'],'alarm-fingerprint', 'AlarmGnuRadioFiles', './run_capture_flowgraph_433920000_local')
 runCapture_433920000_external = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_433920000_external')
-runCapture_433420000_local = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_434320000_local')
+runCapture_433420000_local = os.path.join(os.path.sep, os.environ['HOME'],'alarm-fingerprint', 'AlarmGnuRadioFiles', './run_capture_flowgraph_434320000_local')
 runCapture_433420000_external = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_434320000_external')
 
 def disk_check(diskdir):
@@ -97,8 +97,8 @@ while True:
                 invalid_option_select()
     elif select_drives == 2:   
         # Before running any processing - check diskspace > 40 GB (adjust if needed)
-        if os.path.exists("/media/bear/SDRAlarmSignals"):
-            disk = os.path.join(os.path.sep, 'media', 'bear', 'SDRAlarmSignals')
+        if os.path.exists("/media/user/SDRAlarmSignals"):
+            disk = os.path.join(os.path.sep, 'media', 'user', 'SDRAlarmSignals')
             disk_space = disk_check(disk)
             if disk_space < 40000000:
                 print("\n"+"--------------------------------------------------------------------------")
