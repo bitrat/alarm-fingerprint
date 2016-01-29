@@ -15,28 +15,15 @@ Alarm components:
 
 Test alarm signals (to verify processing code has been setup up correctly, can be downloaded from https://drive.google.com/folderview?id=0B8gCZryoEOWIZDBsbVFVZF93dW8&usp=sharing ).
 
-These .cap files must be placed in the Captured folder (see Folder structure below)
+These .cap files must be placed in the Captured folder (within the AlarmGnuRadioFiles Folder structure)
 
 GENERAL DESCRIPTION FOR RUNNING THE CODE
 
 (Refer to Equipment setup documentation for how to glue this all together = hardware + software)
 
-Create the AlarmGnuradioFiles folder in your user directory. Place the scripts in this directory.
-
-Create the following subdirectories:
-
-- AlarmGnuRadioFiles
-   - AlarmSignals
-     - logs
-     - Original
-     - Processed
-  - Captured
-  - conf
-  - init
+The scripts are run within the AlarmGnuradioFiles folder in your user directory. Replace "user", in the scripts, with your home directory username. Any external harddrive is referenced as /media/user in the scripts, change to your path/username.
   
-  scripts (place in AlarmGnuRadioFiles root directory)
-  
-The following is a description of the current python files, GNURadio files and order of processing (described for the DSC Alexor alarm, processed on local PC hard drive).
+The following is a description of the current python scripts, GNURadio files, and the order of processing (The Example described, is for the DSC Alexor alarm, processed on local PC hard drive).
 
 Scripts overview Example – DSC Alexor alarm, local drive
 
