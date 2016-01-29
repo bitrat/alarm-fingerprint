@@ -7,7 +7,7 @@ In a field/real world setting however, this is not so easy. A way of being able 
 
 This project contains proof of concept code, which automates blackbox wireless alarm signal identification and storage.
 
-Alarm components:
+## Alarm components:
 - Spectra 4000 with both RX1 and RTX3 wireless modules, DCT2 reeds, PMD75 PIR, REM15 and REM3 keyfobs.
 - DSC Alexor wireless alarm system,WS4945A reeds, WS4904 PIR and WS4939 keyfobs.
 - Bosch 3000 with B810 wireless module, RFDW-SM reeds, RF940E PIR and RFKF-FB keyfobs.
@@ -17,7 +17,7 @@ Test alarm signals (to verify processing code has been setup up correctly, can b
 
 These .cap files must be placed in the Captured folder (within the AlarmGnuRadioFiles Folder structure)
 
-GENERAL DESCRIPTION FOR RUNNING THE CODE
+## GENERAL DESCRIPTION FOR RUNNING THE CODE
 
 (Refer to Equipment setup documentation for how to glue this all together = hardware + software)
 
@@ -25,7 +25,7 @@ The scripts are run within the AlarmGnuradioFiles folder in your user directory.
   
 The following is a description of the current python scripts, GNURadio files, and the order of processing (The Example described, is for the DSC Alexor alarm, processed on local PC hard drive).
 
-Scripts overview Example – DSC Alexor alarm, local drive
+### Scripts overview Example – DSC Alexor alarm, local drive
 
 ./capture_signals.py
 
@@ -43,7 +43,7 @@ capture_signals.py – select signal capture options from menu.
   - runs puresignal_435720000MHz.py flowgraph, captures signals every 30 seconds, saves .cap files into a directory.
 Note: Needed to use timeout in run_capture_flowgraph_433920000_local script at the moment ,because wait() and stop() didn't work in .grc flowgraph code. (Could possibly do this with GnuRadio Block message passing). 
 
-Process signal description
+###Process signal description
 
 process_signals.py – select signal processing options from menu. looks in directory for .cap files (captured files) and passes them to :
 - run_addconst_flowgraphs script, which will run the .cap files through different offsets (-0.25 to -0.9 in -0.05 steps). Uses .py file :
