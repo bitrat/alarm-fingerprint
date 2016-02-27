@@ -29,7 +29,7 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         self.channel_spacing = channel_spacing = 1500000
         self.samp_rate = samp_rate = 10e6
-        self.pathprefix = pathprefix = "/media/user/SDRAlarmSignals/Captured/"
+        self.pathprefix = pathprefix = "/home/user/AlarmGnuRadioFiles/Captured/"
         self.freq_offset = freq_offset = (channel_spacing/2)+(channel_spacing * .1)
         self.freq = freq = 433.42e6
 

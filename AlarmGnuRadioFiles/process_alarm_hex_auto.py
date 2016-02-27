@@ -22,18 +22,18 @@ def open_hex_file(hexname, fdir, capdir, processdir, origdir, select_process_mod
         sys.exit()
 
     try:
-        alarmPreambleSynchDSC, alarmPreambleSynchSpectra, alarmPreambleSynchYale, alarmPreambleSynchBosch = choose_alarm()
+        alarmPreambleSynchDSC, alarmPreambleSynchSpectra, alarmPreambleSynchYale, alarmPreambleSynchBosch, alarmPreambleSynchIQPanel = choose_alarm()
     except Exception as error:
-        print "Hex File could not be processed."
+        print "Hex File could not be processed. Are you defining and returning the alarmPreamble ?"
         sys.exit()    
 
-    alarm_transmit_packets(alarmPreambleSynchDSC, alarmPreambleSynchSpectra, alarmPreambleSynchYale, alarmPreambleSynchBosch, indata, hexname, fdir, capdir, processdir, origdir, select_process_mode, count_waterfall, alarm_num, alarmType) 
+    alarm_transmit_packets(alarmPreambleSynchDSC, alarmPreambleSynchSpectra, alarmPreambleSynchYale, alarmPreambleSynchBosch, alarmPreambleSynchIQPanel, indata, hexname, fdir, capdir, processdir, origdir, select_process_mode, count_waterfall, alarm_num, alarmType) 
 
 def choose_alarm():
 
 # Hex values within different Alarm signals can be similar
 # Make sure the Preamble and Synch word are matched at the beginning of the signal, and are not values in the middle of a signal
-# by adding 3 \\x00's at the start for DSC and Spectra (no signal data so far contains 24 zero bits within it, only at the start)
+# by adding 3 \\x00's at the start for DSC, Spectra and IQPanel (no signal data so far contains 24 zero bits within it)
 
     alarmPreambleSynchDSC = r"\\x00\\x00\\x00\\x03\\xff\\x55|\\x00\\x00\\x00\\xff\\xd5|\\x00\\x00\\x00\\x0f\\xfd\\x55|\\x00\\x00\\x00\\x3f\\xf5|\\x00\\x00\\x00\\x1f\\xd5|\\x00\\x00\\x00\\x0f\\xd5|\\x00\\x00\\x00\\x01\\xfd\\x55|\\x00\\x00\\x00\\x3f\\x55|\\x00\\x00\\x00\\x7f\\x55|\\x00\\x00\\x00\\x07\\xf5|\\x00\\x00\\x00\\x03\\xf5|\\x00\\x00\\x00\\x0f\\xea|\\x00\\x00\\x00\\xfe\\xaa|\\x00\\x00\\x00\\x01\\xff\\xaa|\\x00\\x00\\x00\\x3f\\xaa|\\x00\\x00\\x00\\x3f\\x55|\\x00\\x00\\x00\\x03\\xfa\\xaa|\\x00\\x00\\x00\\x1f\\xaa|\\x00\\x00\\x00\\x7f\\xea|\\x00\\x00\\x00\\x1f\\xfa\\xaa|\\x00\\x00\\x00\\xfd\\x55|\\x00\\x00\\x00\\x07\\xfe\\xaa|\\x00\\x00\\x00\\x07\\xea|\\x00\\x00\\x00\\x01\\xfa\\xaa|\\x00\\x00\\x00\\x7e\\xaa"
 
@@ -43,7 +43,9 @@ def choose_alarm():
 
     alarmPreambleSynchBosch = r"\\x00\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff|\\x01\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff|\\x03\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff|\\x07\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff|\\x1f\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff|\\x3f\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff|\\x7f\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff\\xff"
 
-    return alarmPreambleSynchDSC, alarmPreambleSynchSpectra, alarmPreambleSynchYale, alarmPreambleSynchBosch
+    alarmPreambleSynchIQPanel = r"\\x00\\x00\\x00\\x00\\x00\\x00\\x01\\xff|\\x00\\x00\\x00\\x00\\x00\\x00\\x03\\xff|\\x00\\x00\\x00\\x00\\x00\\x00\\x07\\xff|\\x00\\x00\\x00\\x00\\x00\\x00\\x0f\\xff|\\x00\\x00\\x00\\x00\\x00\\x00\\x3f\\xff|\\x00\\x00\\x00\\x00\\x00\\x00\\x7f\\xff|\\x00\\x00\\x00\\x00\\x00\\x00\\xff|\\x00\\x00\\x00\\x00\\x00\\x00\\x1f\\xff"
+
+    return alarmPreambleSynchDSC, alarmPreambleSynchSpectra, alarmPreambleSynchYale, alarmPreambleSynchBosch, alarmPreambleSynchIQPanel
 
 def keep_or_remove_alarm_capture_file(pattern, indata, hexname, fdir, capdir, processdir, origdir, select_process_mode, count_waterfall, alarm_num, alarmType):
 
@@ -128,7 +130,7 @@ def match_preamble(pattern, patternMatch, indata, hexname, fdir, capdir, process
         delete_nonalarm_files(capdir, hexname, select_process_mode, count_waterfall, alarm_num, alarmType)
 
 
-def alarm_transmit_packets(alarmPreambleSynchDSC, alarmPreambleSynchSpectra, alarmPreambleSynchYale, alarmPreambleSynchBosch, indata, hexname, fdir, capdir, processdir, origdir, select_process_mode, count_waterfall, alarm_num, alarmType):
+def alarm_transmit_packets(alarmPreambleSynchDSC, alarmPreambleSynchSpectra, alarmPreambleSynchYale, alarmPreambleSynchBosch, alarmPreambleSynchIQPanel, indata, hexname, fdir, capdir, processdir, origdir, select_process_mode, count_waterfall, alarm_num, alarmType):
 
     logflag = "cmdline" 
     # Process any matched Preambles - extract Full Packets
@@ -154,6 +156,12 @@ def alarm_transmit_packets(alarmPreambleSynchDSC, alarmPreambleSynchSpectra, ala
     elif alarmType == "Bosch3000":
     # Match Bosch
         pattern = re.compile(alarmPreambleSynchBosch)
+        patternMatch = re.findall(pattern,indata)  
+        match_preamble(pattern, patternMatch, indata, hexname, fdir, capdir, processdir, origdir, select_process_mode, count_waterfall, alarm_num, alarmType, logflag)
+
+    elif alarmType == "IQPanel":
+    # Match IQPanel
+        pattern = re.compile(alarmPreambleSynchIQPanel)
         patternMatch = re.findall(pattern,indata)  
         match_preamble(pattern, patternMatch, indata, hexname, fdir, capdir, processdir, origdir, select_process_mode, count_waterfall, alarm_num, alarmType, logflag)
 
@@ -212,6 +220,8 @@ def delete_nonalarm_files(sourcedir, delname, select_process_mode, count_waterfa
                     remove_cap_file(alarmType, rmcap)
                 elif (alarmType == "Bosch3000") and (os.path.isfile(rmcap)):
                     remove_cap_file(alarmType, rmcap)
+                elif (alarmType == "IQPanel") and (os.path.isfile(rmcap)):
+                    remove_cap_file(alarmType, rmcap)
 
             if select_process_mode == 3:
                 # In waterfall mode, the signal is checked as a Spectra signal first, then checked as a Yale signal, then as a DSC, then as a Bosch, then, if no signal found, remove the original .cap capture file
@@ -225,6 +235,9 @@ def delete_nonalarm_files(sourcedir, delname, select_process_mode, count_waterfa
                     waterfall_mode_msg(count_waterfall, alarmType, alarm_num, rmcap) 
 
                 elif alarmType == "Bosch3000":
+                    waterfall_mode_msg(count_waterfall, alarmType, alarm_num, rmcap)
+
+                elif alarmType == "IQPanel":
                     waterfall_mode_msg(count_waterfall, alarmType, alarm_num, rmcap)
 
 def delete_file(fName):

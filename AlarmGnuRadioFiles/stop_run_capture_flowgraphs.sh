@@ -1,10 +1,14 @@
 #! /bin/bash
 killall run_capture_flowgraph_433920000_external
 killall run_capture_flowgraph_433920000_local
-killall run_capture_flowgraph_434320000_external
-killall run_capture_flowgraph_434320000_local
+killall run_capture_flowgraph_433420000_external
+killall run_capture_flowgraph_433420000_local
+killall run_capture_flowgraph_319500000_external
+killall run_capture_flowgraph_319500000_local
 killall timeout 30s
-killall python puresignal_435720000MHz.py
-killall python puresignal_435720000MHz_external.py
-killall python puresignal_434320000MHz.py
-killall python puresignal_434320000MHz_external.py
+killall python puresignal_433920000MHz.py
+killall python puresignal_433920000MHz_external.py
+killall python puresignal_433420000MHz.py
+killall python puresignal_433420000MHz_external.py
+killall python puresignal_319500000MHz.py
+killall python puresignal_319500000MHz_external.py

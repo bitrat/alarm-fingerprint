@@ -305,6 +305,65 @@ def convert_bits_to_bosch_data(bits_list):
 
     return converted_bit_list
 
+def convert_bits_to_iqpanel_data(bits_list):
+    converted_bit_list = []
+    for bitidx, bititem in enumerate(bits_list):
+        # match the statistically determined hex 0 and f counts, and convert them into the 0 and 1 symbol bits
+        #1
+        if bititem == '0':
+            converted_bit_list.append('0')
+        elif bititem == 'f':
+            converted_bit_list.append('1')
+        #2
+        elif bititem == '00':
+            converted_bit_list.append('0')
+        elif bititem == 'ff':
+            converted_bit_list.append('1')
+        #3
+        elif bititem == '000':
+            converted_bit_list.append('0')
+        elif bititem == 'fff':
+            converted_bit_list.append('1')
+        #4
+        elif bititem == '0000':
+            converted_bit_list.append('00')
+        elif bititem == 'ffff':
+            converted_bit_list.append('1')
+        #5
+        elif bititem == '00000':
+            converted_bit_list.append('00')
+        #6
+        elif bititem == '000000':
+            converted_bit_list.append('00')
+
+        #10
+        elif bititem == 'ffffffffff':
+            converted_bit_list.append('11')
+
+        #11
+        elif bititem == 'fffffffffff':
+            converted_bit_list.append('11')
+
+        #12
+        elif bititem == 'ffffffffffff':
+            converted_bit_list.append('11') 
+
+        #22
+        elif bititem == 'ffffffffffffffffffffff':
+            converted_bit_list.append('1111')  
+
+        #23
+        elif bititem == 'fffffffffffffffffffffff':
+            converted_bit_list.append('1111')
+        #24
+        elif bititem == 'ffffffffffffffffffffffff':
+            converted_bit_list.append('1111')
+        #25
+        elif bititem == 'fffffffffffffffffffffffff':
+            converted_bit_list.append('1111')
+
+    return converted_bit_list
+
 def extract_packet(matchPreamble, extractPacketStart, alarmIdentified, indata, count):
     output_file = []
 
@@ -410,6 +469,7 @@ def extract_packet(matchPreamble, extractPacketStart, alarmIdentified, indata, c
 
         if indata:
             hexPacketData = indata.replace("\\x", "")
+            # errCorrBinary Not used for this alarm
             errCorrBinary = "000"
 
             try:
@@ -419,8 +479,8 @@ def extract_packet(matchPreamble, extractPacketStart, alarmIdentified, indata, c
                 status = ""
 
             if status:
-                auto_logger.debug("Check Signal: %s", chksignal)              
-                auto_logger.debug("Status: %s", status)
+                #auto_logger.debug("Check Signal: %s", chksignal)              
+                #auto_logger.debug("Status: %s", status)
                 output_file.append(status[0])
                 count +=1
             else:
@@ -452,6 +512,30 @@ def extract_packet(matchPreamble, extractPacketStart, alarmIdentified, indata, c
                 count +=0
 
         return count, output_file
+
+    elif alarmIdentified == "IQPanel":
+
+        if indata:
+            hexPacketData = indata.replace("\\x", "")
+            # errCorrBinary Not used for this alarm
+            errCorrBinary = "000"
+
+            try:
+                chksignal, status = device_status(errCorrBinary, alarmIdentified, hexPacketData)
+            except (TypeError, ValueError):
+                #auto_logger.debug("No Status information found in signal. Continue to next .dat file")
+                status = ""
+
+            if status:
+                #auto_logger.debug("Check Signal: %s", chksignal)              
+                #auto_logger.debug("Status: %s", status)
+                output_file.append(status[0])
+                count +=1
+            else:
+                output_file.append("")
+
+        return count, output_file
+
     else:
         auto_logger.debug("No Alarm identified, no Packets extracted.")
         count +=0
@@ -476,6 +560,25 @@ def extract_bosch_packet(hexPacketData):
     # Split according to the consistent Preamble 11001100110011001100110010101011
     bosch_signal_list = split_bits(bosch_data_parts_list, ['11001100110011001100110010101011'])
     return bosch_signal_list
+
+def extract_iqpanel_packet(hexPacketData):
+    # Split IQPanel signal into the 8 separate signal parts
+    # print hexPacketData
+    iqpanel_bits_list = split_bits(hexPacketData, ['00000000','1', '3','7', '8','c', 'e','0f', 'f0'])
+    iqpanel_data_list = convert_bits_to_iqpanel_data(iqpanel_bits_list)
+
+    # Check for presence of IQPanel peripheral Preamble, then double check against known patterns
+    # Then ID what the peripheral and status is      
+    # Join the converted (actual) symbol bits together
+    iqpanel_data_parts_list = []
+    iqpanel_data_parts_list = ''.join(iqpanel_data_list)
+
+    # Split according to Starting Preamble (13 01) = 1010101010101010101010101 at start of each signal part
+    # Cinch Reeds sometimes don't have the whole Preamble present in the signal. IQMotion PIR signals do.
+    # Took out 11110 at start of preamble, so Reeds can be more relaibly identified.
+    # iqpanel_signal_list = split_bits(iqpanel_data_parts_list, ['111101010101010101010101010101'])
+    iqpanel_signal_list = split_bits(iqpanel_data_parts_list, ['1010101010101010101010101'])
+    return iqpanel_signal_list
 
 def remove_non_data(matchPreamble,extractedBinary):  
     if matchPreamble == '\\x00\\x00\\x00\\x03\\xff\\x55' or matchPreamble == '\\x00\\x00\\x00\\x3f\\xf5' or matchPreamble == '\\x00\\x00\\x00\\x07\\xf5' or matchPreamble == '\\x00\\x00\\x00\\x03\\xf5' or matchPreamble == '\\x00\\x00\\x00\\x3f\\x55' or matchPreamble == '\\x00\\x00\\x00\\x7f\\x55' or matchPreamble == '\\x00\\x00\\x00\\x3f\\x55':
@@ -656,7 +759,7 @@ def device_status(deviceData, alarmIdentified, hexPacketData):
                             yale_data_part_afternext = ''.join(yale_data_list[next_index_part2:next_index_part3])
  
                             # "break" simply logs first instance of a yale signal in the Capture .cap file
-                            # remove "break" if you want to detect all the multiple instances of signals 
+                            # remove "break" if you want to detect all the multiple parts of the signals 
 
                             if (yale_data_part == '11111101100101100101101101101101101101101101100'):
                                 if (yale_data_part_next == '11111101100101100100101101101100101101101101100'):
@@ -677,7 +780,6 @@ def device_status(deviceData, alarmIdentified, hexPacketData):
                                     break
 
                             elif (yale_data_part_afternext == '1111110110010110010110110110110110110110110010'):
-                                print "\nYale Standard Peripheral identified :"
                                 if (yale_data_part == '1111110110010110010110110110110110110010010010'):
                                     if (yale_data_part_next == '1111110110010110010110110110010010110110110110'):
                                         status_console = " Yale Standard PIR signal.   \n-----------------------------------------------------------"
@@ -744,6 +846,59 @@ def device_status(deviceData, alarmIdentified, hexPacketData):
                             auto_logger.info(status_console)
                             status_output.append(status)
                             return status, status_output
+
+    elif (alarmIdentified == "IQPanel"): 
+        iqpanel_signal_list = extract_iqpanel_packet(hexPacketData)
+        # print iqpanel_signal_list
+        if iqpanel_signal_list:
+            for index, elem in enumerate(iqpanel_signal_list):
+                if index <= len(iqpanel_signal_list):
+                    if iqpanel_signal_list[index] != '':
+                    # Check likelihood it's an IQPanel peripheral 
+                    # (The End of each peripheral signal has a distinct set of 8 patterns)
+                        iqpanel_8EndPatterns =['0010010010010110','001001001010110','001001010010110','00100101010110','001010010010110','00101001010110','00101010010110','0010101010110']  
+                        peripheralDetect = "00101010100101"
+                        for indexPattern, elemPattern in enumerate(iqpanel_8EndPatterns):
+                            if ((elemPattern in iqpanel_signal_list[index]) and (peripheralDetect in iqpanel_signal_list[index])) :
+                                # Now confirm IQPanel peripheral
+                                # Extract Peripheral and status information - contains identified sequence
+                                reedOpen = "010010010100101010100101"
+                                reedClose = "0101010100101010100101"
+                                # There are between 8 - 16 parts to a PIR signal, 
+                                # each part has a unique sequence across all IQMotion PIR's
+                                # Can detect this, and then the unique part sequence of just one part, 
+                                # or of a sampling of other part combinations,  
+                                # (modify code as to what's wanted)
+                                pirDetect = "001010100101010101010101"
+                                # ID specific PIR part patterns - double check
+                                pirPart =["0010101010101001010100101010100101","00101001010101001010100101010100101","001010101010101010100101010100101","00101010010101001010100101010100101","0010100101010101010100101010100101","001010010010101001010100101010100101","0010101001010101010100101010100101","00101010100101001010100101010100101","00101001001010101010100101010100101","001010010100101001010100101010100101","00101010100101001010100101010100101","0010101010010101010100101010100101","001010100100101001010100101010100101","00101001010010101010100101010100101","0010100100100101001010100101010100101","00101010010010101010100101010100101","001010010010010101010100101010100101"]
+
+                                if pirDetect in iqpanel_signal_list[index]:
+                                    for partIndex, partElem in enumerate(pirPart):
+                                        part = pirDetect+pirPart[partIndex]
+                                        if part in iqpanel_signal_list[index]: 
+                                            status_console = "IQPanel IQMotion PIR signal part identified.   \n-----------------------------------------------------------"
+                                            status = "IQPanel IQMotion PIR signal part identified.\n                          -----------------------------------------------------------"
+                                            auto_logger.info(status_console)
+                                            status_output.append(status)
+                                            return part, status_output
+                                            #break
+
+                                elif reedOpen in iqpanel_signal_list[index]:
+                                    status_console = "IQPanel Cinch Reed Open signal part identified.   \n-----------------------------------------------------------"
+                                    status = "IQPanel Cinch Reed Open signal part identified.\n                          -----------------------------------------------------------"
+                                    auto_logger.info(status_console)
+                                    status_output.append(status)
+                                    return reedOpen, status_output
+                                    #break
+
+                                elif reedClose in iqpanel_signal_list[index]:
+                                    status_console = "IQPanel Cinch Reed Close signal part identified.   \n-----------------------------------------------------------"
+                                    status = "IQPanel Cinch Reed Close signal part identified.\n                          -----------------------------------------------------------"
+                                    auto_logger.info(status_console)
+                                    status_output.append(status)
+                                    return reedClose, status_output
+                                    #break
 
 def hex_to_binary(hexPacketData):
         scale = 16
@@ -843,13 +998,10 @@ def check_device_type(deviceData, alarmIdentified):
 
         if bosch_signal_list:
             for index, elem in enumerate(bosch_signal_list):
-
                 if index <= len(bosch_signal_list):
-
                     if bosch_signal_list[index]:
                         # Extract Peripheral category information - index 33:64 = Peripheral info
                         bosch_signal_peripheral = bosch_signal_list[index][33:64]
-
                         if bosch_signal_peripheral == '0101011010101001100110011010101':
                             deviceType = "Bosch PIR"
                             auto_logger.info("Device Type:          %s",deviceType)
@@ -879,4 +1031,5 @@ def check_device_type(deviceData, alarmIdentified):
                         else:
                             output_devicetype.append("")
                             return output_devicetype
+
 

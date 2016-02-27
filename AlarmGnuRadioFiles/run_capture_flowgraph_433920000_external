@@ -20,7 +20,7 @@ for fs in $filesystem
            echo "[PRESS CONTROL+ALT+X TO STOP CAPTURING]"
            echo "---------------------------------------"
            # Offset Gnuradio capture flowgraph
-           timeout 30s python puresignal_435720000MHz_external.py
+           timeout 30s python puresignal_433920000MHz_external.py
          fi
        done
   done

@@ -2,10 +2,9 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Fri Nov 20 18:33:36 2015
+# Generated: Sat Feb 27 18:35:35 2016
 ##################################################
 
-from datetime import datetime
 from gnuradio import blocks
 from gnuradio import eng_notation
 from gnuradio import gr
@@ -27,11 +26,13 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         # Variables
         ##################################################
-        self.channel_spacing = channel_spacing = 1500000
+        self.channel_spacing = channel_spacing = 1000000
         self.samp_rate = samp_rate = 10e6
-        self.pathprefix = pathprefix = "/home/user/alarm-fingerprint/AlarmGnuRadioFiles/Captured/"
         self.freq_offset = freq_offset = (channel_spacing/2)+(channel_spacing * .1)
-        self.freq = freq = 433.42e6
+        self.freq = freq = 319.5e6
+
+        # Added
+        self.pathprefix = pathprefix = "/home/user/AlarmGnuRadioFiles/Captured/"
 
         ##################################################
         # Blocks
@@ -44,12 +45,14 @@ class top_block(grc_wxgui.top_block_gui):
         self.osmosdr_source_0.set_iq_balance_mode(0, 0)
         self.osmosdr_source_0.set_gain_mode(False, 0)
         self.osmosdr_source_0.set_gain(10, 0)
-        self.osmosdr_source_0.set_if_gain(20, 0)
-        self.osmosdr_source_0.set_bb_gain(20, 0)
+        self.osmosdr_source_0.set_if_gain(24, 0)
+        self.osmosdr_source_0.set_bb_gain(30, 0)
         self.osmosdr_source_0.set_antenna("", 0)
         self.osmosdr_source_0.set_bandwidth(0, 0)
           
+        # Changed          
         self.FileCapture = blocks.file_sink(gr.sizeof_gr_complex*1, pathprefix+"Capture_"+datetime.now().strftime("%Y.%m.%d.%H.%M.%S") +".cap", False)
+        #
         self.FileCapture.set_unbuffered(False)
 
         ##################################################
@@ -72,12 +75,6 @@ class top_block(grc_wxgui.top_block_gui):
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
         self.osmosdr_source_0.set_sample_rate(self.samp_rate)
-
-    def get_pathprefix(self):
-        return self.pathprefix
-
-    def set_pathprefix(self, pathprefix):
-        self.pathprefix = pathprefix
 
     def get_freq_offset(self):
         return self.freq_offset

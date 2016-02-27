@@ -6,10 +6,12 @@ import subprocess
 import sys
 import itertools
 
-runCapture_433920000_local = os.path.join(os.path.sep, os.environ['HOME'],'alarm-fingerprint', 'AlarmGnuRadioFiles', './run_capture_flowgraph_433920000_local')
+runCapture_433920000_local = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_433920000_local')
 runCapture_433920000_external = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_433920000_external')
-runCapture_433420000_local = os.path.join(os.path.sep, os.environ['HOME'],'alarm-fingerprint', 'AlarmGnuRadioFiles', './run_capture_flowgraph_434320000_local')
+runCapture_433420000_local = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_434320000_local')
 runCapture_433420000_external = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_434320000_external')
+runCapture_319500000_local = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_319500000_local')
+runCapture_319500000_external = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_319500000_external')
 
 def disk_check(diskdir):
    # Before processing any files, check for sufficient space > 40 GB 
@@ -56,7 +58,8 @@ def freq_select_menu():
     print (44 * "-")
     print ("1. 433.92 MHz (DSC Alexor, Spectra 4000 and Yale Standard)")
     print ("2. 433.42 MHz (Bosch 3000)")
-    print ("3. Quit")
+    print ("3. 319.50 MHz (IQPanel)")
+    print ("4. Quit")
     print (44 * "-")
 
 while True:
@@ -89,6 +92,13 @@ while True:
                     print "\nLocal Capture at 433420000 Hz ... ", e
                     quit(0)
             elif select_freq == 3:
+                # Capture at Selected Frequency
+                try: 
+                    subprocess.call([runCapture_319500000_local], shell=False)
+                except (subprocess.CalledProcessError,KeyboardInterrupt) as e:
+                    print "\nLocal Capture at 319500000 Hz ... ", e
+                    quit(0)
+            elif select_freq == 4:
                 print("\n"+"--------------------------------------------------------------------------")
                 print ("Capture Program stopped.")
                 print("--------------------------------------------------------------------------"+"\n")
@@ -107,7 +117,7 @@ while True:
                 quit(0)
             else:
                 freq_select_menu()
-                select_freq = option_select("Select option [1-3] : ")
+                select_freq = option_select("Select option [1-4] : ")
                 if  select_freq == 1:
                     # Capture at Selected Frequency
                     try: 
@@ -123,6 +133,13 @@ while True:
                         print "\nExternal drive Capture at 433420000 Hz ... ", e
                         quit(0)
                 elif select_freq == 3:
+                    # Capture at Selected Frequency
+                    try: 
+                        subprocess.call([runCapture_319500000_external], shell=False)
+                    except (subprocess.CalledProcessError,KeyboardInterrupt) as e:
+                        print "\nExternal drive Capture at 319500000 Hz ... ", e
+                        quit(0)
+                elif select_freq == 4:
                     print("\n"+"--------------------------------------------------------------------------")
                     print ("Capture Program stopped.")
                     print("--------------------------------------------------------------------------"+"\n")

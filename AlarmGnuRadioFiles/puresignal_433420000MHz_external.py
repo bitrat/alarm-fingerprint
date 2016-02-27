@@ -2,7 +2,7 @@
 ##################################################
 # Gnuradio Python Flow Graph
 # Title: Top Block
-# Generated: Sun Sep 27 03:14:01 2015
+# Generated: Fri Nov 20 18:33:36 2015
 ##################################################
 
 from datetime import datetime
@@ -16,7 +16,6 @@ from optparse import OptionParser
 import osmosdr
 import time
 import wx
-import shelve
 
 class top_block(grc_wxgui.top_block_gui):
 
@@ -28,11 +27,13 @@ class top_block(grc_wxgui.top_block_gui):
         ##################################################
         # Variables
         ##################################################
-        self.channel_spacing = channel_spacing = 3000000
+        self.channel_spacing = channel_spacing = 1500000
         self.samp_rate = samp_rate = 10e6
+        # Changed
         self.pathprefix = pathprefix = "/media/user/SDRAlarmSignals/Captured/"
+        #
         self.freq_offset = freq_offset = (channel_spacing/2)+(channel_spacing * .1)
-        self.freq = freq = 433.92e6
+        self.freq = freq = 433.42e6
 
         ##################################################
         # Blocks
@@ -49,8 +50,10 @@ class top_block(grc_wxgui.top_block_gui):
         self.osmosdr_source_0.set_bb_gain(20, 0)
         self.osmosdr_source_0.set_antenna("", 0)
         self.osmosdr_source_0.set_bandwidth(0, 0)
-          
+
+        # Changed          
         self.FileCapture = blocks.file_sink(gr.sizeof_gr_complex*1, pathprefix+"Capture_"+datetime.now().strftime("%Y.%m.%d.%H.%M.%S") +".cap", False)
+        #
         self.FileCapture.set_unbuffered(False)
 
         ##################################################

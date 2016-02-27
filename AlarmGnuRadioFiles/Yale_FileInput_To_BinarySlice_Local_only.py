@@ -33,7 +33,6 @@ class top_block(grc_wxgui.top_block_gui):
         self.symb_rate = symb_rate = 30000
         self.samp_rate = samp_rate = 10e6
         self.decimation = decimation = 300
-        self.addconst = addconst = 0
         self.symb_rate_slider = symb_rate_slider = 4000
         self.samp_per_sym = samp_per_sym = int((samp_rate/(decimation)) / symb_rate)
         self.freq_offset = freq_offset = 1.8e6
@@ -41,11 +40,18 @@ class top_block(grc_wxgui.top_block_gui):
         self.channel_trans = channel_trans = 1.2e6
         self.channel_spacing = channel_spacing = 3000000+2000000
 
+        # Added
+        self.addconst = addconst = 0
+
+        # Changed
         # Changed from the original Yale_FileInput_BinaryOutput GNURadio Flowgraph export
-        self.initpathprefix = initpathprefix = "/home/user/alarm-fingerprint/AlarmGnuRadioFiles/"
-        self.pathprefix = pathprefix = "/home/user/alarm-fingerprint/AlarmGnuRadioFiles/Captured/"
+        self.initpathprefix = initpathprefix = "/home/user/AlarmGnuRadioFiles/"
+        self.pathprefix = pathprefix = "/home/user/AlarmGnuRadioFiles/Captured/"
+        # Same as external hard drive processing code variables
         self.finput = finput = initpathprefix+"Capture_init.cap"
         self.foutput = foutput = pathprefix+finput.rsplit("/", 1)[1] 
+
+        # Added
         self.recfile4 = recfile4 = initpathprefix+"/init/_AddConst"+str(addconst)+ "_Yale.dat"
 
         ##################################################
@@ -137,7 +143,8 @@ class top_block(grc_wxgui.top_block_gui):
     def set_finput(self, finput):
         self.finput = finput
         # Changed
-        self.set_foutput("/home/user/alarm-fingerprint/AlarmGnuRadioFiles/Captured/"+finput.rsplit("/", 1)[1])
+        self.set_foutput("/home/user/AlarmGnuRadioFiles/Captured/"+finput.rsplit("/", 1)[1])
+        #
         self.blocks_file_source_0.open(self.finput, False)
 
     def get_symb_rate(self):
@@ -196,13 +203,15 @@ class top_block(grc_wxgui.top_block_gui):
         self.samp_per_sym = samp_per_sym
         self.digital_clock_recovery_mm_xx_0.set_omega(self.samp_per_sym*(1+0.0))
 
+    # Added
     def get_recfile4(self):
         return self.recfile4
 
     def set_recfile4(self, recfile4):
         self.recfile4 = recfile4
         self.blocks_file_sink_0_0.open(self.recfile4)
-
+    #
+ 
     def get_freq_offset(self):
         return self.freq_offset
 
@@ -241,11 +250,8 @@ if __name__ == '__main__':
     else:
         const = float(sys.argv[1])
         finput = sys.argv[2]
-#   print "Type of const:", type(const)
-#    print "Type of fname:", type(finput)
-#    print "const:", const
-    foutput = "/home/user/alarm-fingerprint/AlarmGnuRadioFiles/Captured/"+finput.rsplit("/", 1)[1]
-#    print "foutput:", foutput
+    # Changed - local or external hard drive
+    foutput = "/home/user/AlarmGnuRadioFiles/Captured/"+finput.rsplit("/", 1)[1]
     tb = top_block()
     tb.Start(True)
     tb.set_addconst(const)
