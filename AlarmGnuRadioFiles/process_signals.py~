@@ -181,40 +181,6 @@ def audio_select():
     else:
         invalid_option_select()
 
-def select_flowgraph(alarmType, select_drives):
-
-    if alarmType == "Spectra4000":
-        if select_drives == 1:
-            flowgraph = '/home/bear/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_only.py'
-        elif select_drives == 2:
-            flowgraph = '/home/bear/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_and_External.py'
-
-    elif alarmType == "YaleStandard":
-        if select_drives == 1:
-            flowgraph = '/home/bear/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_only.py'
-        elif select_drives == 2:
-            flowgraph = '/home/bear/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_and_External.py'
-
-    elif alarmType == "Bosch3000":
-        if select_drives == 1:
-            flowgraph = '/home/bear/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_only.py'
-        elif select_drives == 2:
-            flowgraph = '/home/bear/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_and_External.py'
-
-    elif alarmType == "DSCAlexxor":
-        if select_drives == 1:
-            flowgraph = '/home/bear/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_only.py'
-        elif select_drives == 2:
-            flowgraph = '/home/bear/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_and_External.py'
-        # Added
-    elif alarmType == "IQPanel":
-        if select_drives == 1:
-            flowgraph = '/home/bear/AlarmGnuRadioFiles/IQPanel_FileInput_To_BinarySlice_Local_only.py'
-        elif select_drives == 2:
-            flowgraph = '/home/bear/AlarmGnuRadioFiles/IQPanel_FileInput_To_BinarySlice_Local_and_External.py'
-
-    return flowgraph
-
 def process_end_text():
     print("\n"+"--------------------------------------------------------------------------")
     print("\n"+"1 Capture file left in directory %s."% capdir)
@@ -254,41 +220,57 @@ def process(fdir, capdir, processdir, flowgraph, origdir, alarmType, select_proc
         # SINGLE ALARM MODE Processing 
         if (select_process_mode == 1):
             if alarmType == "Spectra4000":
-                flowgraph = select_flowgraph(alarmType, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_and_External.py'
 
             elif alarmType == "YaleStandard":
-                flowgraph = select_flowgraph(alarmType, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_and_External.py'
 
             elif alarmType == "Bosch3000":
-                flowgraph = select_flowgraph(alarmType, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_and_External.py'
 
             elif alarmType == "DSCAlexxor":
-                flowgraph = select_flowgraph(alarmType, select_drives)
-            # Added
-            elif alarmType == "IQPanel":
-                flowgraph = select_flowgraph(alarmType, select_drives)
-            #
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_and_External.py'
+
 
         # CPU MODE Processing 
         if (select_process_mode == 2):
             alarmSET = alarmSETcycle.next()
             if alarmSET == "DSCAlexxor":
                 alarmType = alarmSET
-                flowgraph = select_flowgraph(alarmSET, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_and_External.py'
             elif alarmSET == "Spectra4000":
                 alarmType = alarmSET
-                flowgraph = select_flowgraph(alarmSET, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_and_External.py'
             elif alarmSET == "YaleStandard":
                 alarmType = alarmSET
-                flowgraph = select_flowgraph(alarmSET, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_and_External.py'
             elif alarmSET == "Bosch3000":
                 alarmType = alarmSET
-                flowgraph = select_flowgraph(alarmSET, select_drives)
-            # Added
-            elif alarmSET == "IQPanel":
-                alarmType = alarmSET
-                flowgraph = select_flowgraph(alarmSET, select_drives)
-            #
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_and_External.py'
 
         # WATERFALL MODE Processing 
         if (select_process_mode == 3):
@@ -299,24 +281,39 @@ def process(fdir, capdir, processdir, flowgraph, origdir, alarmType, select_proc
 
             if alarmSET == "DSCAlexxor":
                 alarmType = "Spectra4000"
-                flowgraph = select_flowgraph(alarmType, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_and_External.py'
 
             elif alarmSET == "Spectra4000":
                 alarmType = "YaleStandard"
-                flowgraph = select_flowgraph(alarmType, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_and_External.py'
 
             elif alarmSET == "YaleStandard":
                 alarmType = "Bosch3000"
-                flowgraph = select_flowgraph(alarmType, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_and_External.py'
 
             # Changed when new Alarm added
             elif alarmSET == "Bosch3000":
                 alarmType = "IQPanel"
-                flowgraph = select_flowgraph(alarmType, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/IQPanel_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/IQPanel_FileInput_To_BinarySlice_Local_and_External.py'
 
             elif alarmSET == "IQPanel":
                 alarmType = "DSCAlexxor"
-                flowgraph = select_flowgraph(alarmType, select_drives)
+                if select_drives == 1:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_only.py'
+                elif select_drives == 2:
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_and_External.py'
             #
 
         if (capnum > 1) :
@@ -378,7 +375,6 @@ print (30 * "-")
 # Add additional Alarms to the end of this list
 alarmSET = ["DSCAlexxor", "Spectra4000", "YaleStandard", "Bosch3000", "IQPanel"]
 alarm_num = len(alarmSET)
-print alarm_num
 alarmSETcycle = itertools.cycle(alarmSET)
 
 while True:
@@ -389,8 +385,8 @@ while True:
         # LOCAL SET VARIABLES
         fdir = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles')
         capdir = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', 'Captured')
-        processdir = '/home/bear/AlarmGnuRadioFiles/AlarmSignals/Processed'
-        origdir = '/home/bear/AlarmGnuRadioFiles/AlarmSignals/Original'
+        processdir = '/home/user/AlarmGnuRadioFiles/AlarmSignals/Processed'
+        origdir = '/home/user/AlarmGnuRadioFiles/AlarmSignals/Original'
         runScript = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_addconst_flowgraphs')
 
         # Before running any processing - check diskspace > 40 GB (adjust if needed)
@@ -413,24 +409,24 @@ while True:
                 #
                 if select_alarms == 1:
                     alarmType = "Spectra4000"
-                    flowgraph = '/home/bear/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_only.py'
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_only.py'
                     alarm_flowgraph_used(alarmType)
                 elif select_alarms == 2:
                     alarmType = "DSCAlexxor"
-                    flowgraph = '/home/bear/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_only.py'
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_only.py'
                     alarm_flowgraph_used(alarmType)
                 elif select_alarms == 3:
                     alarmType = "YaleStandard"
-                    flowgraph = '/home/bear/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_only.py'
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_only.py'
                     alarm_flowgraph_used(alarmType)
                 elif select_alarms == 4:
                     alarmType = "Bosch3000"
-                    flowgraph = '/home/bear/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_only.py'
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_only.py'
                     alarm_flowgraph_used(alarmType)
                 # Added
                 elif select_alarms == 5:
                     alarmType = "IQPanel"
-                    flowgraph = '/home/bear/AlarmGnuRadioFiles/IQPanel_FileInput_To_BinarySlice_Local_only.py'
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/IQPanel_FileInput_To_BinarySlice_Local_only.py'
                     alarm_flowgraph_used(alarmType)
                 #
                 # Changed
@@ -443,13 +439,13 @@ while True:
             elif select_process_mode == 2:
                 alarmType = "Spectra4000"
                 # Starting Alarm flowgraph
-                flowgraph = '/home/bear/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_only.py'
+                flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_only.py'
                 modeType = "CPU Mode"
                 mode_menu(modeType)
             elif select_process_mode == 3:
                 alarmType = "Spectra4000"
                 # Starting Alarm flowgraph
-                flowgraph = '/home/bear/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_only.py'
+                flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_only.py'
                 modeType = "Waterfall Mode"
                 mode_menu(modeType)
             elif select_process_mode == 4:
@@ -466,13 +462,13 @@ while True:
     elif select_drives == 2:
   
             # EXTERNAL HARD DRIVE SET VARIABLES
-        fdir = os.path.join(os.path.sep, 'media', 'bear', 'SDRAlarmSignals')
-        capdir = os.path.join(os.path.sep, 'media', 'bear', 'SDRAlarmSignals', 'Captured')
-        processdir = '/media/bear/SDRAlarmSignals/AlarmSignals/Processed'
-        origdir = '/media/bear/SDRAlarmSignals/AlarmSignals/Original'
+        fdir = os.path.join(os.path.sep, 'media', 'user', 'SDRAlarmSignals')
+        capdir = os.path.join(os.path.sep, 'media', 'user', 'SDRAlarmSignals', 'Captured')
+        processdir = '/media/user/SDRAlarmSignals/AlarmSignals/Processed'
+        origdir = '/media/user/SDRAlarmSignals/AlarmSignals/Original'
         runScript = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_addconst_flowgraphs')
 
-        if os.path.exists("/media/bear/SDRAlarmSignals"):
+        if os.path.exists("/media/user/SDRAlarmSignals"):
             disk_space = disk_check(fdir)
             if disk_space < 40000000:
                 print("\n"+"--------------------------------------------------------------------------")
@@ -492,24 +488,24 @@ while True:
                     #
                     if select_alarms == 1:
                        alarmType = "Spectra4000"
-                       flowgraph = '/home/bear/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_and_External.py'
+                       flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_and_External.py'
                        alarm_flowgraph_used(alarmType)
                     elif select_alarms == 2:
                         alarmType = "DSCAlexxor"
-                        flowgraph = '/home/bear/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_and_External.py'
+                        flowgraph = '/home/user/AlarmGnuRadioFiles/DSC_FileInput_To_BinarySlice_Local_and_External.py'
                         alarm_flowgraph_used(alarmType)
                     elif select_alarms == 3:
                         alarmType = "YaleStandard"
-                        flowgraph = '/home/bear/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_and_External.py'
+                        flowgraph = '/home/user/AlarmGnuRadioFiles/Yale_FileInput_To_BinarySlice_Local_and_External.py'
                         alarm_flowgraph_used(alarmType)
                     elif select_alarms == 4:
                         alarmType = "Bosch3000"
-                        flowgraph = '/home/bear/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_and_External.py'
+                        flowgraph = '/home/user/AlarmGnuRadioFiles/Bosch3000_FileInput_To_BinarySlice_Local_and_External.py'
                         alarm_flowgraph_used(alarmType)
                     # Added
                     elif select_alarms == 5:
                         alarmType = "IQPanel"
-                        flowgraph = '/home/bear/AlarmGnuRadioFiles/IQPanel_FileInput_To_BinarySlice_Local_and_External.py'
+                        flowgraph = '/home/user/AlarmGnuRadioFiles/IQPanel_FileInput_To_BinarySlice_Local_and_External.py'
                         alarm_flowgraph_used(alarmType)
                     #
                     # Changed
@@ -522,13 +518,13 @@ while True:
                 elif select_process_mode == 2:
                     alarmType = "Spectra4000"
                     # Starting Alarm flowgraph
-                    flowgraph = '/home/bear/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_and_External.py'
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_and_External.py'
                     modeType = "CPU Mode"
                     mode_menu(modeType)
                 elif select_process_mode == 3:
                     alarmType = "Spectra4000"
                     # Starting Alarm flowgraph
-                    flowgraph = '/home/bear/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_and_External.py'
+                    flowgraph = '/home/user/AlarmGnuRadioFiles/Spectra_FileInput_To_BinarySlice_Local_and_External.py'
                     modeType = "Waterfall Mode"
                     mode_menu(modeType)
                 elif select_process_mode == 4:
