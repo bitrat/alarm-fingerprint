@@ -19,12 +19,12 @@ elif [ $4 = "YaleStandard" ]; then
     stopNum=-0.25
 elif [ $4 = "Bosch3000" ]; then
     const=-0.01
-    step=-0.2
+    step=-0.1
     stopNum=-0.21
 elif [ $4 = "IQPanel" ]; then
-    const=-0.05
-    step=-0.05
-    stopNum=-0.25
+    const=-0.01
+    step=-0.02
+    stopNum=-0.21
 else
     const=-0.0
     step=-0.1
