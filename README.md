@@ -12,7 +12,7 @@ This project contains proof of concept code, which automates blackbox wireless a
 - DSC Alexor wireless alarm system,WS4945A reeds, WS4904 PIR and WS4939 keyfobs.
 - Bosch 3000 with B810 wireless module, RFDW-SM reeds, RF940E PIR and RFKF-FB keyfobs.
 - Yale standard wireless alarm system.
-- IQPanel alarm system (Cinch Reeds and IQMotion PIRs) - Known under other names such as Morepork.
+- IQPanel alarm system (Cinch Reeds and IQMotion PIRs) - Marketed under other names (with fairly Hostile to research T&C's).
 
 Test alarm signals (to verify processing code has been setup up correctly, can be downloaded from https://drive.google.com/folderview?id=0B8gCZryoEOWIZDBsbVFVZF93dW8&usp=sharing ).
 
