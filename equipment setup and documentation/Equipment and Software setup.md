@@ -1,4 +1,4 @@
-EQUIPMENT AND SOFTWARE SETUP
+#EQUIPMENT AND SOFTWARE SETUP
 
 1.	Base linux used: Ubuntu 14.04.3
 2.	Install git
@@ -67,7 +67,7 @@ EQUIPMENT AND SOFTWARE SETUP
  
 8.	Create Alarm signal processing directory structure, on both the local, and on an external hard drive (if used)
 
-LOCAL:
+##LOCAL:
 /home/user/AlarmGnuradioFiles
 /home/user/AlarmGnuradioFiles/conf
 /home/user/AlarmGnuradioFiles/Captured
@@ -75,7 +75,7 @@ LOCAL:
 /home/user/AlarmGnuradioFiles/AlarmSignals/Original
 /home/user/AlarmGnuradioFiles/AlarmSignals/Processed
 
-EXTERNAL Hard Drive
+##EXTERNAL Hard Drive
 /media/user/SDRAlarmSignals/conf
 /media/user/SDRAlarmSignals/Captured
 /media/user/AlarmGnuradioFiles/AlarmSignals/logs
@@ -113,9 +113,6 @@ killall python puresignal_435720000MHz_external.py
 killall python puresignal_434320000MHz.py
 killall python puresignal_434320000MHz_external.py
 
-
-
-
 Attach it to a keyboard shortcut (Keyboard - Keyboard shortcuts - bash /home/bear/AlarmGnuRadioFiles/stop_run_capture_flowgraphs.sh)
 $chmod u+x stop_run_capture_flowgraphs.sh
 Assign Control+Alt+X shortcut.
@@ -123,15 +120,15 @@ Assign Control+Alt+X shortcut.
 Pressing Control+Alt+X when capturing signals stops capture loop and flowgraph.
 
 Folder Directory Structure and Scripts
--	AlarmSignals
-o	logs
-o	Original
-o	Processed
--	Captured
--	Conf
--	init
+*	AlarmSignals
+    *	logs
+*	Original
+*	Processed
+    *	Captured
+    *	Conf
+    *	init
 
-Scripts
+#Scripts
 alarm_fingerprint.py
 Bosch3000_FileInput_To_BinarySlice_Local_and_External.py
 Bosch3000_FileInput_To_BinarySlice_Local_only.py
@@ -139,6 +136,8 @@ Capture_init.cap
 capture_signals.py
 DSC_FileInput_To_BinarySlice_Local_and_External.py
 DSC_FileInput_To_BinarySlice_Local_only.py
+IQPanel_FileInput_To_BinarySlice_Local_and_External.py
+IQPanel_FileInput_To_BinarySlice_Local_only.py
 grc_bit_converter.py
 process_alarm_hex_auto.py
 process_signals.py
