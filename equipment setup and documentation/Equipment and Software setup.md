@@ -92,7 +92,7 @@ $ sudo apt-get install espeak
 
 espeak_text.py contains:
 
-#!/usr/bin/env python
+\#!/usr/bin/env python
 import subprocess
 
 text = "Check if your capture device is still recording !"
@@ -102,7 +102,7 @@ time.sleep(5)
 11.	Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
 
 $nano stop_run_capture_flowgraphs.sh
-#!/ bin/bash
+\#!/ bin/bash
 killall run_capture_flowgraph_433920000_external
 killall run_capture_flowgraph_433920000_local
 killall run_capture_flowgraph_434320000_external
