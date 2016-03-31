@@ -22,6 +22,11 @@ These .cap files must be placed in the Captured folder (within the AlarmGnuRadio
 
 (Refer to Equipment setup documentation for how to glue this all together = hardware + software)
 
+#TO DO
+* SIGINT - Process date and time of the peripherals and keyfobs to track occupants movements/presence
+* REM3 keyfob signal is detected - but process further to determine Lock, Unlock etc (like other peripherals)
+* Transform the .doc files (that currently have to be downloaded to be read) into proper text with graphics to be displayed here. 
+
 The scripts are run within the AlarmGnuradioFiles folder in your user directory. Replace "user", in the scripts, with your home directory username. Any external harddrive is referenced as /media/user in the scripts, change to your path/username.
   
 The following is a description of the current python scripts, GNURadio files, and the order of processing (The Example described, is for the DSC Alexor alarm, processed on local PC hard drive).
