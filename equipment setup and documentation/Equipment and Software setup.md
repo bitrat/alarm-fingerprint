@@ -38,12 +38,14 @@ Optional Settings
     - $ sudo apt-get install libboost-thread-dev -y
     - $ sudo apt-get install libboost-program-options-dev -y
     - $ sudo apt-get install swig -y
-5.	$ git clone https://github.com/mossmann/hackrf.git
+5.	$cd hackrf_files
+    
+    $ git clone https://github.com/mossmann/hackrf.git
 
- Move to the hackrf/host directory   
-    - $ cd hackrf/host
+   Move to the hackrf/host directory   
+    - $ cd hackrf_files/hackrf/host
 
- Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
+   Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
  
         - $ mkdir build && cd build
         
