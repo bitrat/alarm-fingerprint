@@ -9,7 +9,6 @@ Optional Settings
 2.	Install git
     - $sudo apt-get install git –y
 3.	Gnuradio software install - follow instructions at https://github.com/mossmann/hackrf/wiki/Operating-System-Tips -> Installing GnuRadio manually:
-4.	
 - Create a directory to hold all the files needed to build the supporting software. In this example we will create a directory called hackrf_files under our home folder:
 
     $ mkdir ~/hackrf_files
