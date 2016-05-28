@@ -78,40 +78,47 @@ Optional Settings
 16.	Test the capture_signals.py and process alarm python scripts.
 - chmod them all
 - scripts to contain #!usr/bin/env python or #!/bin/bash 
-## Espeak 
+
+##Espeak 
 
 - (to alert you when capture files all processed (indicates hackrf disconnected))
 - $ sudo apt-get install espeak
 - espeak_text.py contains:
-**\#!/usr/bin/env python
-**import subprocess
-**text = "Check if your capture device is still recording !"
-**subprocess.Popen(["espeak", "-v", "mb-en1", text])
-**time.sleep(5)
+
+    \#!/usr/bin/env python
+    
+    import subprocess
+    
+    text = "Check if your capture device is still recording !"
+    
+    subprocess.Popen(["espeak", "-v", "mb-en1", text])
+    
+    time.sleep(5)
+    
 ##Stop Flowgraphs Manually (fixes a bug with tstop)
 
 Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
 - $nano stop_run_capture_flowgraphs.sh
 
-\#!/ bin/bash
+    \#!/ bin/bash
 
-killall run_capture_flowgraph_433920000_external
+    killall run_capture_flowgraph_433920000_external
 
-killall run_capture_flowgraph_433920000_local
+    killall run_capture_flowgraph_433920000_local
 
-killall run_capture_flowgraph_434320000_external
+    killall run_capture_flowgraph_434320000_external
 
-killall run_capture_flowgraph_434320000_local
+    killall run_capture_flowgraph_434320000_local
 
-killall timeout 30s
+    killall timeout 30s
 
-killall python puresignal_435720000MHz.py
+    killall python puresignal_435720000MHz.py
 
-killall python puresignal_435720000MHz_external.py
+    killall python puresignal_435720000MHz_external.py
 
-killall python puresignal_434320000MHz.py
+    killall python puresignal_434320000MHz.py
 
-killall python puresignal_434320000MHz_external.py
+    killall python puresignal_434320000MHz_external.py
 
 - Attach it to a keyboard shortcut (Keyboard - Keyboard shortcuts - bash /home/bear/AlarmGnuRadioFiles/stop_run_capture_flowgraphs.sh)
 - $chmod u+x stop_run_capture_flowgraphs.sh
