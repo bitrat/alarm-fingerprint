@@ -21,8 +21,8 @@ To run: $gnuradio-companion
 
 (Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
 
-4.	Hackrf software install, test capture and replay 
-    
+4.	Hackrf software install, test capture and replay
+
     The Instructions from previous Ubuntu 14.04 install work, used:
 
     https://mborgerson.com/getting-started-with-the-hackrf-one-on-ubuntu-14-04
@@ -42,20 +42,16 @@ To run: $gnuradio-companion
         libboost-program-options-dev -y
                        
         swig -y
-
-5. $ git clone https://github.com/mossmann/hackrf.git
-    
-6. Move to the hackrf/host directory
-    
-        $ cd hackrf/host
-    
-7. Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
+        
+5.	$ git clone https://github.com/mossmann/hackrf.git
+6.	Move to the hackrf/host directory   $ cd hackrf/host
+7.	Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
     
         $ mkdir build && cd build
     
         $ cmake ../ -DINSTALL_UDEV_RULES=ON
-    
-8. Build and Install.
+
+8.	Build and Install.
     
         $ make
     
@@ -63,9 +59,7 @@ To run: $gnuradio-companion
     
         $ sudo ldconfig
 
-9. Test hackrf works:
-    $hackrf_info
-
+9.	Test hackrf works:  $hackrf_info
 10.	Audacity install
 
     $sudo apt-get install audacity –y
@@ -73,7 +67,6 @@ To run: $gnuradio-companion
     To run: $audacity
 
 11.	Check python installed – yes 
-
 12.	Install Don Weber’s python bitarray 0.8.1 and then grc_bit_converter.py
 
     $wget https://pypi.python.org/packages/source/b/bitarray/bitarray-0.8.1.tar.gz
@@ -81,28 +74,34 @@ To run: $gnuradio-companion
     $ cd bitarray-0.8.1
     $ sudo python setup.py install
 
-    https://github.com/cutaway/grc_bit_converter 
+https://github.com/cutaway/grc_bit_converter 
 
-    $git clone https://github.com/cutaway/grc_bit_converter.git
+$git clone https://github.com/cutaway/grc_bit_converter.git
 
-    Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
- 
+Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
+
 13.	Clone this repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
 14.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name /home/user = /home/yourUser
 15.	Create Alarm signal processing directory structure, on an external hard drive (if used)
 
 ##EXTERNAL Hard Drive
 /media/user/SDRAlarmSignals/conf
+
 /media/user/SDRAlarmSignals/Captured
+
 /media/user/AlarmGnuradioFiles/AlarmSignals/logs
+
 /media/user/GnuradioFiles/AlarmSignals/Original
+
 /media/user/GnuradioFiles/AlarmSignals/Processed
 
 16.	Test the capture_signals.py and process alarm python scripts.
+
 chmod them all
+
 scripts to contain #!usr/bin/env python or #!/bin/bash 
 
-17.	 Espeak 
+17.	Espeak 
 (to alert you when capture files all processed (indicates hackrf disconnected))
 $ sudo apt-get install espeak
 
@@ -119,14 +118,23 @@ time.sleep(5)
 
 $nano stop_run_capture_flowgraphs.sh
 \#!/ bin/bash
+
 killall run_capture_flowgraph_433920000_external
+
 killall run_capture_flowgraph_433920000_local
+
 killall run_capture_flowgraph_434320000_external
+
 killall run_capture_flowgraph_434320000_local
+
 killall timeout 30s
+
 killall python puresignal_435720000MHz.py
+
 killall python puresignal_435720000MHz_external.py
+
 killall python puresignal_434320000MHz.py
+
 killall python puresignal_434320000MHz_external.py
 
 Attach it to a keyboard shortcut (Keyboard - Keyboard shortcuts - bash /home/bear/AlarmGnuRadioFiles/stop_run_capture_flowgraphs.sh)
