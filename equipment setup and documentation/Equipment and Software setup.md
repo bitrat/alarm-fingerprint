@@ -81,7 +81,23 @@
 9.	Clone repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
 10.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name 
     
-    /home/user = /home/yourUser
+    /home/user = /home/yourUser in the following files:
+
+    - Bosch3000_FileInput_To_BinarySlice_Local_and_External.py
+    - Bosch3000_FileInput_To_BinarySlice_Local_only.py
+    - capture_signals.py
+    - DSC_FileInput_To_BinarySlice_Local_and_External.py
+    - DSC_FileInput_To_BinarySlice_Local_only.py
+    - IQPanel_FileInput_To_BinarySlice_Local_and_External.py
+    - IQPanel_FileInput_To_BinarySlice_Local_only.py
+    - puresignal_434320000MHz.py
+    - puresignal_434320000MHz_external.py
+    - puresignal_435720000MHz.py
+    - puresignal_435720000MHz_external.py
+    - Spectra_FileInput_To_BinarySlice_Local_and_External.py
+    - Spectra_FileInput_To_BinarySlice_Local_only.py
+    - Yale_FileInput_To_BinarySlice_Local_and_External.py
+    - Yale_FileInput_To_BinarySlice_Local_only.py
 
 11.	Create Alarm signal processing directory structure, on an external hard drive (if used)
 
@@ -117,97 +133,22 @@
 ##Stop Flowgraphs Manually (fixes a bug with tstop)
 
 Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
-- $nano stop_run_capture_flowgraphs.sh
 
-    \#!/ bin/bash
-
-    killall run_capture_flowgraph_433920000_external
-
-    killall run_capture_flowgraph_433920000_local
-
-    killall run_capture_flowgraph_434320000_external
-
-    killall run_capture_flowgraph_434320000_local
-
-    killall timeout 30s
-
-    killall python puresignal_435720000MHz.py
-
-    killall python puresignal_435720000MHz_external.py
-
-    killall python puresignal_434320000MHz.py
-
-    killall python puresignal_434320000MHz_external.py
-
-- Attach it to a keyboard shortcut (Keyboard - Keyboard shortcuts - bash /home/bear/AlarmGnuRadioFiles/stop_run_capture_flowgraphs.sh)
-- $chmod u+x stop_run_capture_flowgraphs.sh
+- Attach stop_run_capture_flowgraphs.sh to a keyboard shortcut: (Keyboard - Keyboard shortcuts - bash /home/bear/AlarmGnuRadioFiles/stop_run_capture_flowgraphs.sh)
 - Assign Control+Alt+X shortcut.
-- Pressing Control+Alt+X when capturing signals stops capture loop and flowgraph.
+- => Pressing Control+Alt+X when capturing signals stops the capture loop and flowgraph.
 
 ##Test the capture_signals.py and process alarm python scripts
 
 ##SUMMARY
 Folder Directory Structure and Scripts within /home/user/alarm-fingerprint/AlarmGnuradioFiles
+*	Captured
+*	conf
+*	init
 *	AlarmSignals
     *	logs
-*	Original
-*	Processed
-    *	Captured
-    *	Conf
-    *	init
-
-###Scripts
-alarm_fingerprint.py
-
-Bosch3000_FileInput_To_BinarySlice_Local_and_External.py
-
-Bosch3000_FileInput_To_BinarySlice_Local_only.py
-
-Capture_init.cap
-
-capture_signals.py
-
-DSC_FileInput_To_BinarySlice_Local_and_External.py
-
-DSC_FileInput_To_BinarySlice_Local_only.py
-
-IQPanel_FileInput_To_BinarySlice_Local_and_External.py
-
-IQPanel_FileInput_To_BinarySlice_Local_only.py
-
-grc_bit_converter.py
-
-process_alarm_hex_auto.py
-
-process_signals.py
-
-puresignal_434320000MHz.py
-
-puresignal_434320000MHz_external.py
-
-puresignal_435720000MHz.py
-
-puresignal_435720000MHz_external.py
-
-run_addconst_flowgraphs
-
-run_capture_flowgraph_433920000_external
-
-run_capture_flowgraph_433920000_local
-
-run_capture_flowgraph_434320000_external
-
-run_capture_flowgraph_434320000_local
-
-Spectra_FileInput_To_BinarySlice_Local_and_External.py
-
-Spectra_FileInput_To_BinarySlice_Local_only.py
-
-Stop_run_capture_flowgraphs.sh
-
-Yale_FileInput_To_BinarySlice_Local_and_External.py
-
-Yale_FileInput_To_BinarySlice_Local_only.py
+    *	Original
+    *	Processed
 
 
 
