@@ -134,7 +134,7 @@
 
 Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
 
-- Attach stop_run_capture_flowgraphs.sh to a keyboard shortcut: (Keyboard - Keyboard shortcuts - bash /home/bear/AlarmGnuRadioFiles/stop_run_capture_flowgraphs.sh)
+- Attach stop_run_capture_flowgraphs.sh to a keyboard shortcut: (SYstem Settings - Keyboard - Keyboard shortcuts - bash /home/bear/AlarmGnuRadioFiles/stop_run_capture_flowgraphs.sh)
 - Assign Control+Alt+X shortcut.
 - => Pressing Control+Alt+X when capturing signals stops the capture loop and flowgraph.
 
