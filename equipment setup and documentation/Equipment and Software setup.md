@@ -1,6 +1,10 @@
 #EQUIPMENT AND SOFTWARE SETUP
 
 1.	Base linux used: Ubuntu 16.04 (encrypted home directory caused an issue, so use a test PC and don't encrypt home dir)
+    
+    $ sudo apt-get update
+
+    $ sudo apt-get upgrade -y
 
     Optional Settings
     
@@ -11,52 +15,9 @@
 
     $sudo apt-get install git –y
 
-3.	Hackrf software install, test capture and replay
-    
-    https://mborgerson.com/getting-started-with-the-hackrf-one-on-ubuntu-14-04
-    
-    $ sudo apt-get install build-essential \
-                        
-        cmake \
-                       
-        libusb-1.0-0-dev \
-                       
-        liblog4cpp5-dev \
-                       
-        libboost-dev \
-                       
-        libboost-system-dev \
-                       
-        libboost-thread-dev \
-                       
-        libboost-program-options-dev \
-                       
-        swig
+3.	Gnuradio software install - follow instructions at https://github.com/mossmann/hackrf/wiki/Operating-System-Tips Installing GnuRadio manually.
 
-    4. $ git clone https://github.com/mossmann/hackrf.git
-    
-    5. Move to the hackrf/host directory
-    
-        $ cd hackrf/host
-    
-    6. Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
-    
-        $ mkdir build && cd build
-    
-    $ cmake ../ -DINSTALL_UDEV_RULES=ON
-    
-    7. Build and Install.
-    
-        $ make
-    
-        $ sudo make install
-    
-        $ sudo ldconfig
-
-8. Test hackrf works:
-    $hackrf_info
-
-9.	Gnuradio software install
+##REMOVE
     https://github.com/mossmann/hackrf/wiki/Installing-gnuradio-on-Ubuntu-14.04-with-the-packaging-manager 
 
     $sudo add-apt-repository ppa:gqrx/releases
@@ -67,8 +28,55 @@
     
     $sudo apt-get install gqrx gnuradio gr-osmosdr –y
 
+##REMOVE END
+
     To run: $gnuradio-companion
     (Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
+    
+4.	Hackrf software install, test capture and replay 
+    
+    The Instructions from previous Ubuntu 14.04 install work, used:
+
+    https://mborgerson.com/getting-started-with-the-hackrf-one-on-ubuntu-14-04
+    
+    $ sudo apt-get install cmake -y 
+                       
+        libusb-1.0-0-dev -y 
+                       
+        liblog4cpp5-dev -y 
+                       
+        libboost-dev -y 
+                       
+        libboost-system-dev -y
+                       
+        libboost-thread-dev -y
+                       
+        libboost-program-options-dev -y
+                       
+        swig -y
+
+5. $ git clone https://github.com/mossmann/hackrf.git
+    
+6. Move to the hackrf/host directory
+    
+        $ cd hackrf/host
+    
+7. Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
+    
+        $ mkdir build && cd build
+    
+        $ cmake ../ -DINSTALL_UDEV_RULES=ON
+    
+8. Build and Install.
+    
+        $ make
+    
+        $ sudo make install
+    
+        $ sudo ldconfig
+
+9. Test hackrf works:
+    $hackrf_info
 
 10.	Audacity install
 
