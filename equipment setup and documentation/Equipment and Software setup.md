@@ -140,18 +140,10 @@ Because normal Control+Z, Control+C in terminal does not kill the run_capture_fl
 
 ##Test the capture_signals.py and process alarm python scripts
 
-##SUMMARY
-Folder Directory Structure and Scripts within /home/user/alarm-fingerprint/AlarmGnuradioFiles
-*	Captured
-*	conf
-*	init
-*	AlarmSignals
-    *	logs
-    *	Original
-    *	Processed
+Open a terminal and $ cd alarm-fingerprint/AlarmGnuradioFiles
 
+Run $ ./capture_signals.py and press buttons on keyfob
 
+Control+Alt+X to stop
 
-
-
-
+Run $ ./process_signals.py and view log folder results.
