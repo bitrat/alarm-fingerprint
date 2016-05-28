@@ -40,14 +40,19 @@ Optional Settings
     - $ cd hackrf/host
 
  Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
+ 
         - $ mkdir build && cd build
+        
         - $ cmake ../ -DINSTALL_UDEV_RULES=ON
+        
  Build and Install.
     - $ make
     - $ sudo make install
     - $ sudo ldconfig
+    
  Test hackrf works:  
     - $hackrf_info
+    
 6.	Audacity install
     - $sudo apt-get install audacity –y
     - To run: $audacity
