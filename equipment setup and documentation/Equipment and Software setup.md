@@ -37,30 +37,34 @@
     
     5. Move to the hackrf/host directory
     
-    $ cd hackrf/host
+        $ cd hackrf/host
     
     6. Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
     
-    $ mkdir build && cd build
+        $ mkdir build && cd build
     
     $ cmake ../ -DINSTALL_UDEV_RULES=ON
     
     7. Build and Install.
-    $ make
-    $ sudo make install
-    $ sudo ldconfig
+    
+        $ make
+    
+        $ sudo make install
+    
+        $ sudo ldconfig
 
 8. Test hackrf works:
     $hackrf_info
-
-    
 
 9.	Gnuradio software install
     https://github.com/mossmann/hackrf/wiki/Installing-gnuradio-on-Ubuntu-14.04-with-the-packaging-manager 
 
     $sudo add-apt-repository ppa:gqrx/releases
+    
     $sudo apt-get update
+    
     $sudo apt-get upgrade -y
+    
     $sudo apt-get install gqrx gnuradio gr-osmosdr –y
 
     To run: $gnuradio-companion
@@ -69,6 +73,7 @@
 10.	Audacity install
 
     $sudo apt-get install audacity –y
+    
     To run: $audacity
 
 11.	Check python installed – yes 
