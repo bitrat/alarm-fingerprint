@@ -24,8 +24,8 @@ Optional Settings
     - To run: $gnuradio-companion
     - (Note: If gr-osmosdr Block is missing in GnuRadio after install – reinstall it - to get osmocom source in gnuradio-companion (install 2 dependencies))
     - $sudo apt-get install gnuradio-dev -y
-    - $sudo apt-get install libhackrf-dev  
-    - $sudo apt-get install gr-osmosdr 
+    - $sudo apt-get install libhackrf-dev -y
+    - $sudo apt-get install gr-osmosdr -y
     
 4.	Hackrf software install, test capture and replay
 
@@ -46,7 +46,7 @@ Optional Settings
     $ git clone https://github.com/mossmann/hackrf.git
 
    Move to the hackrf/host directory   
-    - $ cd hackrf_files/hackrf/host
+    - $ cd hackrf/host
 
    Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
  
@@ -69,14 +69,15 @@ Optional Settings
 7.	Check python installed – yes 
 
 8.	Install Don Weber’s python bitarray 0.8.1 and then grc_bit_converter.py
+    - $cd ~
     - $wget https://pypi.python.org/packages/source/b/bitarray/bitarray-0.8.1.tar.gz
     - $ tar xzf bitarray-0.8.1.tar.gz
     - $ cd bitarray-0.8.1
     - $ sudo python setup.py install
     - $git clone https://github.com/cutaway/grc_bit_converter.git
-    - Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
+        Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
     
-9.	Clone this repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
+9.	Clone repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
 10.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name 
     
     /home/user = /home/yourUser
@@ -102,6 +103,7 @@ Optional Settings
 ##Espeak 
 
 - (to alert you when capture files all processed (indicates hackrf disconnected))
+- $ cd ~
 - $ sudo apt-get install espeak
 - espeak_text.py contains:
 
