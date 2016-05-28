@@ -71,7 +71,9 @@ Optional Settings
 **time.sleep(5)
 18.	Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
 - $nano stop_run_capture_flowgraphs.sh
+
 \#!/ bin/bash
+
 killall run_capture_flowgraph_433920000_external
 
 killall run_capture_flowgraph_433920000_local
@@ -93,6 +95,7 @@ killall python puresignal_434320000MHz_external.py
 - $chmod u+x stop_run_capture_flowgraphs.sh
 - Assign Control+Alt+X shortcut.
 - Pressing Control+Alt+X when capturing signals stops capture loop and flowgraph.
+
 ##SUMMARY
 Folder Directory Structure and Scripts within /home/user/alarm-fingerprint/AlarmGnuradioFiles
 *	AlarmSignals
@@ -105,30 +108,55 @@ Folder Directory Structure and Scripts within /home/user/alarm-fingerprint/Alarm
 
 #Scripts
 alarm_fingerprint.py
+
 Bosch3000_FileInput_To_BinarySlice_Local_and_External.py
+
 Bosch3000_FileInput_To_BinarySlice_Local_only.py
+
 Capture_init.cap
+
 capture_signals.py
+
 DSC_FileInput_To_BinarySlice_Local_and_External.py
+
 DSC_FileInput_To_BinarySlice_Local_only.py
+
 IQPanel_FileInput_To_BinarySlice_Local_and_External.py
+
 IQPanel_FileInput_To_BinarySlice_Local_only.py
+
 grc_bit_converter.py
+
 process_alarm_hex_auto.py
+
 process_signals.py
+
 puresignal_434320000MHz.py
+
 puresignal_434320000MHz_external.py
+
 puresignal_435720000MHz.py
+
 puresignal_435720000MHz_external.py
+
 run_addconst_flowgraphs
+
 run_capture_flowgraph_433920000_external
+
 run_capture_flowgraph_433920000_local
+
 run_capture_flowgraph_434320000_external
+
 run_capture_flowgraph_434320000_local
+
 Spectra_FileInput_To_BinarySlice_Local_and_External.py
+
 Spectra_FileInput_To_BinarySlice_Local_only.py
+
 Stop_run_capture_flowgraphs.sh
+
 Yale_FileInput_To_BinarySlice_Local_and_External.py
+
 Yale_FileInput_To_BinarySlice_Local_only.py
 
 
