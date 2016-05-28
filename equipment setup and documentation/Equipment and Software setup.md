@@ -76,7 +76,8 @@ Optional Settings
 16.	Test the capture_signals.py and process alarm python scripts.
 - chmod them all
 - scripts to contain #!usr/bin/env python or #!/bin/bash 
-17.	Espeak 
+## Espeak 
+
 - (to alert you when capture files all processed (indicates hackrf disconnected))
 - $ sudo apt-get install espeak
 - espeak_text.py contains:
@@ -85,7 +86,9 @@ Optional Settings
 **text = "Check if your capture device is still recording !"
 **subprocess.Popen(["espeak", "-v", "mb-en1", text])
 **time.sleep(5)
-18.	Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
+##Stop Flowgraphs Manually (fixes a bug with tstop)
+
+Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
 - $nano stop_run_capture_flowgraphs.sh
 
 \#!/ bin/bash
