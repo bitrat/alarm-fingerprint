@@ -6,16 +6,17 @@
     $sudo apt-get install git –y
 
 3.	Hackrf software install, test capture and replay
+    
     https://mborgerson.com/getting-started-with-the-hackrf-one-on-ubuntu-14-04
     $ sudo apt-get install build-essential \
-                       cmake \
-                       libusb-1.0-0-dev \
-                       liblog4cpp5-dev \
-                       libboost-dev \
-                       libboost-system-dev \
-                       libboost-thread-dev \
-                       libboost-program-options-dev \
-                       swig
+                       * cmake \
+                       * libusb-1.0-0-dev \
+                       * liblog4cpp5-dev \
+                       * libboost-dev \
+                       * libboost-system-dev \
+                       * libboost-thread-dev \
+                       * libboost-program-options-dev \
+                       * swig
 
     $ git clone https://github.com/mossmann/hackrf.git
 
