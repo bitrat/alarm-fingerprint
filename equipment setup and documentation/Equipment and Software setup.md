@@ -3,8 +3,8 @@
 1.	Base linux used: Ubuntu 16.04 (encrypted home directory caused an issue, so use a test PC and don't encrypt home dir)
     - $ sudo apt-get update
     - $ sudo apt-get upgrade -y
-
-Optional Settings
+    
+    Optional Settings
     - Enable workspaces (So you can have gnuradio-companion, audacity, Folders, Terminal in separate windows => System - Appearance - Behaviour)
     - Turn off Lock (System - Brightness & Lock - OFF)
     
