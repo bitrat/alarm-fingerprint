@@ -1,6 +1,6 @@
 #EQUIPMENT AND SOFTWARE SETUP
 
-1.	Base linux used: Ubuntu 14.04.3
+1.	Base linux used: Ubuntu 16.04
 2.	Install git
 
     $sudo apt-get install git –y
@@ -68,12 +68,12 @@
 8.	Create Alarm signal processing directory structure, on both the local, and on an external hard drive (if used)
 
 ##LOCAL:
-/home/user/AlarmGnuradioFiles
-/home/user/AlarmGnuradioFiles/conf
-/home/user/AlarmGnuradioFiles/Captured
-/home/user/AlarmGnuradioFiles/AlarmSignals/logs
-/home/user/AlarmGnuradioFiles/AlarmSignals/Original
-/home/user/AlarmGnuradioFiles/AlarmSignals/Processed
+/home/user/alarm-fingerprint/AlarmGnuradioFiles
+/home/user/alarm-fingerprint/AlarmGnuradioFiles/conf
+/home/user/alarm-fingerprint/AlarmGnuradioFiles/Captured
+/home/user/alarm-fingerprint/AlarmGnuradioFiles/AlarmSignals/logs
+/home/user/alarm-fingerprint/AlarmGnuradioFiles/AlarmSignals/Original
+/home/user/alarm-fingerprint/AlarmGnuradioFiles/AlarmSignals/Processed
 
 ##EXTERNAL Hard Drive
 /media/user/SDRAlarmSignals/conf
@@ -119,7 +119,7 @@ Assign Control+Alt+X shortcut.
 
 Pressing Control+Alt+X when capturing signals stops capture loop and flowgraph.
 
-Folder Directory Structure and Scripts
+Folder Directory Structure and Scripts within /home/user/alarm-fingerprint/AlarmGnuradioFiles
 *	AlarmSignals
     *	logs
 *	Original
