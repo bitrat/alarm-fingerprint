@@ -1,26 +1,17 @@
 #EQUIPMENT AND SOFTWARE SETUP
 
 1.	Base linux used: Ubuntu 16.04 (encrypted home directory caused an issue, so use a test PC and don't encrypt home dir)
-    
-    $ sudo apt-get update
+    ⋅⋅* $ sudo apt-get update
+    ⋅⋅* $ sudo apt-get upgrade -y
 
-    $ sudo apt-get upgrade -y
-
-    Optional Settings
-    
-    - Enable workspaces (So you can have gnuradio-companion, audacity, Folders, Terminal in separate windows = System -Appearance - Behaviour)
-    - Turn off Lock (System - Brightness & Lock - OFF)
-
+Optional Settings
+    ⋅⋅* Enable workspaces (So you can have gnuradio-companion, audacity, Folders, Terminal in separate windows = System -Appearance - Behaviour)
+    ⋅⋅* Turn off Lock (System - Brightness & Lock - OFF)
 2.	Install git
-
-    $sudo apt-get install git –y
-
+    ⋅⋅* $sudo apt-get install git –y
 3.	Gnuradio software install - follow instructions at https://github.com/mossmann/hackrf/wiki/Operating-System-Tips Installing GnuRadio manually.
-
-To run: $gnuradio-companion
-
-(Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
-
+⋅⋅* To run: $gnuradio-companion
+⋅⋅* (Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
 4.	Hackrf software install, test capture and replay
 
     The Instructions from previous Ubuntu 14.04 install work, used:
@@ -42,7 +33,6 @@ To run: $gnuradio-companion
         libboost-program-options-dev -y
                        
         swig -y
-        
 5.	$ git clone https://github.com/mossmann/hackrf.git
 6.	Move to the hackrf/host directory   $ cd hackrf/host
 7.	Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
@@ -50,7 +40,6 @@ To run: $gnuradio-companion
         $ mkdir build && cd build
     
         $ cmake ../ -DINSTALL_UDEV_RULES=ON
-
 8.	Build and Install.
     
         $ make
@@ -65,7 +54,6 @@ To run: $gnuradio-companion
     $sudo apt-get install audacity –y
     
     To run: $audacity
-
 11.	Check python installed – yes 
 12.	Install Don Weber’s python bitarray 0.8.1 and then grc_bit_converter.py
 
@@ -79,7 +67,6 @@ https://github.com/cutaway/grc_bit_converter
 $git clone https://github.com/cutaway/grc_bit_converter.git
 
 Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
-
 13.	Clone this repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
 14.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name /home/user = /home/yourUser
 15.	Create Alarm signal processing directory structure, on an external hard drive (if used)
@@ -100,7 +87,6 @@ Edited the grc_bit_converter.py file to write out a .txt file with hex values (w
 chmod them all
 
 scripts to contain #!usr/bin/env python or #!/bin/bash 
-
 17.	Espeak 
 (to alert you when capture files all processed (indicates hackrf disconnected))
 $ sudo apt-get install espeak
@@ -113,7 +99,6 @@ import subprocess
 text = "Check if your capture device is still recording !"
 subprocess.Popen(["espeak", "-v", "mb-en1", text])
 time.sleep(5)
-
 18.	Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
 
 $nano stop_run_capture_flowgraphs.sh
