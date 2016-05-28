@@ -1,6 +1,12 @@
 #EQUIPMENT AND SOFTWARE SETUP
 
 1.	Base linux used: Ubuntu 16.04 (encrypted home directory caused an issue, so use a test PC and don't encrypt home dir)
+
+    Optional Settings
+    
+    - Enable workspaces (So you can have gnuradio-companion, audacity, Folders, Terminal in separate windows = System -Appearance - Behaviour)
+    - Turn off Lock (System - Brightness & Lock - OFF)
+
 2.	Install git
 
     $sudo apt-get install git –y
@@ -11,40 +17,45 @@
     
     $ sudo apt-get install build-essential \
                         
-cmake \
+        cmake \
                        
-libusb-1.0-0-dev \
+        libusb-1.0-0-dev \
                        
-liblog4cpp5-dev \
+        liblog4cpp5-dev \
                        
-libboost-dev \
+        libboost-dev \
                        
-libboost-system-dev \
+        libboost-system-dev \
                        
-libboost-thread-dev \
+        libboost-thread-dev \
                        
-libboost-program-options-dev \
+        libboost-program-options-dev \
                        
-swig
+        swig
 
-    $ git clone https://github.com/mossmann/hackrf.git
-
-    Move to the hackrf/host directory.
+    4. $ git clone https://github.com/mossmann/hackrf.git
+    
+    5. Move to the hackrf/host directory
+    
     $ cd hackrf/host
-
-    Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
+    
+    6. Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
+    
     $ mkdir build && cd build
+    
     $ cmake ../ -DINSTALL_UDEV_RULES=ON
-
-    Build and Install.
+    
+    7. Build and Install.
     $ make
     $ sudo make install
     $ sudo ldconfig
 
-    Test hackrf works:
+8. Test hackrf works:
     $hackrf_info
 
-4.	Gnuradio software install
+    
+
+9.	Gnuradio software install
     https://github.com/mossmann/hackrf/wiki/Installing-gnuradio-on-Ubuntu-14.04-with-the-packaging-manager 
 
     $sudo add-apt-repository ppa:gqrx/releases
@@ -55,14 +66,14 @@ swig
     To run: $gnuradio-companion
     (Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
 
-5.	Audacity install
+10.	Audacity install
 
     $sudo apt-get install audacity –y
     To run: $audacity
 
-6.	Check python installed – yes 
+11.	Check python installed – yes 
 
-7.	Install Don Weber’s python bitarray 0.8.1 and then grc_bit_converter.py
+12.	Install Don Weber’s python bitarray 0.8.1 and then grc_bit_converter.py
 
     $wget https://pypi.python.org/packages/source/b/bitarray/bitarray-0.8.1.tar.gz
     $ tar xzf bitarray-0.8.1.tar.gz
@@ -75,9 +86,9 @@ swig
 
     Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
  
-8.	Clone this repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
-9.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name /home/user = /home/yourUser
-9.	Create Alarm signal processing directory structure, on an external hard drive (if used)
+13.	Clone this repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
+14.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name /home/user = /home/yourUser
+15.	Create Alarm signal processing directory structure, on an external hard drive (if used)
 
 ##EXTERNAL Hard Drive
 /media/user/SDRAlarmSignals/conf
@@ -86,11 +97,11 @@ swig
 /media/user/GnuradioFiles/AlarmSignals/Original
 /media/user/GnuradioFiles/AlarmSignals/Processed
 
-10.	Test the capture_signals.py and process alarm python scripts.
+16.	Test the capture_signals.py and process alarm python scripts.
 chmod them all
 scripts to contain #!usr/bin/env python or #!/bin/bash 
 
-11.	 Espeak 
+17.	 Espeak 
 (to alert you when capture files all processed (indicates hackrf disconnected))
 $ sudo apt-get install espeak
 
@@ -103,7 +114,7 @@ text = "Check if your capture device is still recording !"
 subprocess.Popen(["espeak", "-v", "mb-en1", text])
 time.sleep(5)
 
-12.	Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
+18.	Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
 
 $nano stop_run_capture_flowgraphs.sh
 \#!/ bin/bash
