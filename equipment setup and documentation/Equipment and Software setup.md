@@ -56,15 +56,17 @@ Optional Settings
 6.	Audacity install
     - $sudo apt-get install audacity –y
     - To run: $audacity
+    
 7.	Check python installed – yes 
+
 8.	Install Don Weber’s python bitarray 0.8.1 and then grc_bit_converter.py
     - $wget https://pypi.python.org/packages/source/b/bitarray/bitarray-0.8.1.tar.gz
     - $ tar xzf bitarray-0.8.1.tar.gz
     - $ cd bitarray-0.8.1
     - $ sudo python setup.py install
-    - https://github.com/cutaway/grc_bit_converter 
     - $git clone https://github.com/cutaway/grc_bit_converter.git
-- Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
+    - Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
+    
 9.	Clone this repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
 10.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name /home/user = /home/yourUser
 11.	Create Alarm signal processing directory structure, on an external hard drive (if used)
