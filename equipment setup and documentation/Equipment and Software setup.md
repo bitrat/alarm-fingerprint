@@ -38,7 +38,7 @@ Optional Settings
     - $ sudo apt-get install libboost-thread-dev -y
     - $ sudo apt-get install libboost-program-options-dev -y
     - $ sudo apt-get install swig -y
-5.	$cd hackrf_files
+5.	$ cd hackrf_files
     
     $ git clone https://github.com/mossmann/hackrf.git
 
