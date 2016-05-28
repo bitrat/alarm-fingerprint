@@ -1,6 +1,6 @@
 #EQUIPMENT AND SOFTWARE SETUP
 
-1.	Base linux used: Ubuntu 16.04
+1.	Base linux used: Ubuntu 16.04 (encrypted home directory caused an issue, so use a test PC and don't encrypt home dir)
 2.	Install git
 
     $sudo apt-get install git –y
@@ -65,15 +65,9 @@
 
     Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
  
-8.	Create Alarm signal processing directory structure, on both the local, and on an external hard drive (if used)
-
-##LOCAL:
-/home/user/alarm-fingerprint/AlarmGnuradioFiles
-/home/user/alarm-fingerprint/AlarmGnuradioFiles/conf
-/home/user/alarm-fingerprint/AlarmGnuradioFiles/Captured
-/home/user/alarm-fingerprint/AlarmGnuradioFiles/AlarmSignals/logs
-/home/user/alarm-fingerprint/AlarmGnuradioFiles/AlarmSignals/Original
-/home/user/alarm-fingerprint/AlarmGnuradioFiles/AlarmSignals/Processed
+8.	Clone this repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
+9.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name /home/user = /home/yourUser
+9.	Create Alarm signal processing directory structure, on an external hard drive (if used)
 
 ##EXTERNAL Hard Drive
 /media/user/SDRAlarmSignals/conf
@@ -82,11 +76,11 @@
 /media/user/GnuradioFiles/AlarmSignals/Original
 /media/user/GnuradioFiles/AlarmSignals/Processed
 
-9.	Test the capture_signals.py and process alarm python scripts.
+10.	Test the capture_signals.py and process alarm python scripts.
 chmod them all
 scripts to contain #!usr/bin/env python or #!/bin/bash 
 
-10.	 Espeak 
+11.	 Espeak 
 (to alert you when capture files all processed (indicates hackrf disconnected))
 $ sudo apt-get install espeak
 
@@ -99,7 +93,7 @@ text = "Check if your capture device is still recording !"
 subprocess.Popen(["espeak", "-v", "mb-en1", text])
 time.sleep(5)
 
-11.	Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
+12.	Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
 
 $nano stop_run_capture_flowgraphs.sh
 \#!/ bin/bash
@@ -119,6 +113,7 @@ Assign Control+Alt+X shortcut.
 
 Pressing Control+Alt+X when capturing signals stops capture loop and flowgraph.
 
+##SUMMARY
 Folder Directory Structure and Scripts within /home/user/alarm-fingerprint/AlarmGnuradioFiles
 *	AlarmSignals
     *	logs
