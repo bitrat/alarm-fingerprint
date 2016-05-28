@@ -22,7 +22,10 @@ Optional Settings
     - WARNING: This step may very well take a few hours to complete!
     
     - To run: $gnuradio-companion
-    - (Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
+    - (Note: If gr-osmosdr Block is missing in GnuRadio after install – reinstall it - to get osmocom source in gnuradio-companion (install 2 dependencies))
+    - $sudo apt-get install gnuradio-dev -y
+    - $sudo apt-get install libhackrf-dev  
+    - $sudo apt-get install gr-osmosdr 
     
 4.	Hackrf software install, test capture and replay
 
