@@ -20,6 +20,7 @@ Optional Settings
     - $ chmod 744 ~/hackrf_files/build-gnuradio.sh
     - Execute the script using ~/hackrf_files/build-gnuradio.sh and follow the prompts
     - WARNING: This step may very well take a few hours to complete!
+    
     - To run: $gnuradio-companion
     - (Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
     
