@@ -8,22 +8,18 @@ Optional Settings
     - Turn off Lock (System - Brightness & Lock - OFF)
 2.	Install git
     - $sudo apt-get install git –y
-3.	Gnuradio software install - follow instructions at https://github.com/mossmann/hackrf/wiki/Operating-System-Tips -> Installing GnuRadio manually:
-- Create a directory to hold all the files needed to build the supporting software. In this example we will create a directory called hackrf_files under our home folder:
-
-    $ mkdir ~/hackrf_files
-- Download a copy of Marcus D. Leech's fantastic GNU radio setup script. You can find it here:
-http://www.sbrac.org/files/build-gnuradio
-- Save the script to ~/hackrf_files/build-gnuradio.sh
-- Give the script execution permission
-
-    $ chmod 744 ~/hackrf_files/build-gnuradio.sh
-- Execute the script using ~/hackrf_files/build-gnuradio.sh and follow the prompts
-
-    WARNING: This step may very well take a few hours to complete!
-
-- To run: $gnuradio-companion
-- (Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
+3.	Gnuradio software install - follow instructions at https://github.com/mossmann/hackrf/wiki/Operating-System-Tips -> Installing GnuRadio manually
+    - Create a directory to hold all the files needed to build the supporting software. In this example we will create a directory called hackrf_files under our home folder:
+    - $ mkdir ~/hackrf_files
+    - Download a copy of Marcus D. Leech's fantastic GNU radio setup script. You can find it here:
+    - http://www.sbrac.org/files/build-gnuradio
+    - Save the script to ~/hackrf_files/build-gnuradio.sh
+    - Give the script execution permission
+    - $ chmod 744 ~/hackrf_files/build-gnuradio.sh
+    - Execute the script using ~/hackrf_files/build-gnuradio.sh and follow the prompts
+    - WARNING: This step may very well take a few hours to complete!
+    - To run: $gnuradio-companion
+    - (Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
 4.	Hackrf software install, test capture and replay
 
     The Instructions from previous Ubuntu 14.04 install work, used:
