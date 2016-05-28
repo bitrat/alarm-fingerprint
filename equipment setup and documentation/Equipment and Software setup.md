@@ -6,8 +6,10 @@
 Optional Settings
     - Enable workspaces (So you can have gnuradio-companion, audacity, Folders, Terminal in separate windows = System -Appearance - Behaviour)
     - Turn off Lock (System - Brightness & Lock - OFF)
+    
 2.	Install git
     - $sudo apt-get install git –y
+    
 3.	Gnuradio software install - follow instructions at https://github.com/mossmann/hackrf/wiki/Operating-System-Tips -> Installing GnuRadio manually
     - Create a directory to hold all the files needed to build the supporting software. In this example we will create a directory called hackrf_files under our home folder:
     - $ mkdir ~/hackrf_files
@@ -20,6 +22,7 @@ Optional Settings
     - WARNING: This step may very well take a few hours to complete!
     - To run: $gnuradio-companion
     - (Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
+    
 4.	Hackrf software install, test capture and replay
 
     The Instructions from previous Ubuntu 14.04 install work, used:
@@ -68,21 +71,25 @@ Optional Settings
     - Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
     
 9.	Clone this repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
-10.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name /home/user = /home/yourUser
+10.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name 
+    
+    /home/user = /home/yourUser
+
 11.	Create Alarm signal processing directory structure, on an external hard drive (if used)
 
 ##EXTERNAL Hard Drive
 
-/media/user/SDRAlarmSignals/conf
+    /media/user/SDRAlarmSignals/conf
 
-/media/user/SDRAlarmSignals/Captured
+    /media/user/SDRAlarmSignals/Captured
 
-/media/user/AlarmGnuradioFiles/AlarmSignals/logs
+    /media/user/AlarmGnuradioFiles/AlarmSignals/logs
 
-/media/user/GnuradioFiles/AlarmSignals/Original
+    /media/user/GnuradioFiles/AlarmSignals/Original
 
-/media/user/GnuradioFiles/AlarmSignals/Processed
-16.	Test the capture_signals.py and process alarm python scripts.
+    /media/user/GnuradioFiles/AlarmSignals/Processed
+    
+##Test the capture_signals.py and process alarm python scripts.
 - chmod them all
 - scripts to contain #!usr/bin/env python or #!/bin/bash 
 
