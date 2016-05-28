@@ -135,7 +135,7 @@ Folder Directory Structure and Scripts within /home/user/alarm-fingerprint/Alarm
     *	Conf
     *	init
 
-#Scripts
+###Scripts
 alarm_fingerprint.py
 
 Bosch3000_FileInput_To_BinarySlice_Local_and_External.py
