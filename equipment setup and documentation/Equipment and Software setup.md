@@ -52,15 +52,15 @@ Optional Settings
 
 ##EXTERNAL Hard Drive
 
-*/media/user/SDRAlarmSignals/conf
+/media/user/SDRAlarmSignals/conf
 
-*/media/user/SDRAlarmSignals/Captured
+/media/user/SDRAlarmSignals/Captured
 
-*/media/user/AlarmGnuradioFiles/AlarmSignals/logs
+/media/user/AlarmGnuradioFiles/AlarmSignals/logs
 
-*/media/user/GnuradioFiles/AlarmSignals/Original
+/media/user/GnuradioFiles/AlarmSignals/Original
 
-*/media/user/GnuradioFiles/AlarmSignals/Processed
+/media/user/GnuradioFiles/AlarmSignals/Processed
 16.	Test the capture_signals.py and process alarm python scripts.
 - chmod them all
 - scripts to contain #!usr/bin/env python or #!/bin/bash 
@@ -76,25 +76,25 @@ Optional Settings
 18.	Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
 - $nano stop_run_capture_flowgraphs.sh
 
-*\#!/ bin/bash
+\#!/ bin/bash
 
-*killall run_capture_flowgraph_433920000_external
+killall run_capture_flowgraph_433920000_external
 
-*killall run_capture_flowgraph_433920000_local
+killall run_capture_flowgraph_433920000_local
 
-*killall run_capture_flowgraph_434320000_external
+killall run_capture_flowgraph_434320000_external
 
-*killall run_capture_flowgraph_434320000_local
+killall run_capture_flowgraph_434320000_local
 
-*killall timeout 30s
+killall timeout 30s
 
-*killall python puresignal_435720000MHz.py
+killall python puresignal_435720000MHz.py
 
-*killall python puresignal_435720000MHz_external.py
+killall python puresignal_435720000MHz_external.py
 
-*killall python puresignal_434320000MHz.py
+killall python puresignal_434320000MHz.py
 
-*killall python puresignal_434320000MHz_external.py
+killall python puresignal_434320000MHz_external.py
 
 - Attach it to a keyboard shortcut (Keyboard - Keyboard shortcuts - bash /home/bear/AlarmGnuRadioFiles/stop_run_capture_flowgraphs.sh)
 - $chmod u+x stop_run_capture_flowgraphs.sh
