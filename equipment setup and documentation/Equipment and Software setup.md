@@ -4,7 +4,7 @@
     - $ sudo apt-get update
     - $ sudo apt-get upgrade -y
 Optional Settings
-    - Enable workspaces (So you can have gnuradio-companion, audacity, Folders, Terminal in separate windows = System -Appearance - Behaviour)
+    - Enable workspaces (So you can have gnuradio-companion, audacity, Folders, Terminal in separate windows => System - Appearance - Behaviour)
     - Turn off Lock (System - Brightness & Lock - OFF)
     
 2.	Install git
