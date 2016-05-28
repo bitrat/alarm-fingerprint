@@ -97,10 +97,6 @@ Optional Settings
 
     /media/user/GnuradioFiles/AlarmSignals/Processed
     
-##Test the capture_signals.py and process alarm python scripts.
-- chmod them all
-- scripts to contain #!usr/bin/env python or #!/bin/bash 
-
 ##Espeak 
 
 - (to alert you when capture files all processed (indicates hackrf disconnected))
@@ -147,6 +143,8 @@ Because normal Control+Z, Control+C in terminal does not kill the run_capture_fl
 - $chmod u+x stop_run_capture_flowgraphs.sh
 - Assign Control+Alt+X shortcut.
 - Pressing Control+Alt+X when capturing signals stops capture loop and flowgraph.
+
+##Test the capture_signals.py and process alarm python scripts
 
 ##SUMMARY
 Folder Directory Structure and Scripts within /home/user/alarm-fingerprint/AlarmGnuradioFiles
