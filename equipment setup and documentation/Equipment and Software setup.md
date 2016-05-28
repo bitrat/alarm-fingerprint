@@ -23,7 +23,8 @@ Optional Settings
     - $ sudo apt-get install libboost-program-options-dev -y
     - $ sudo apt-get install swig -y
 5.	$ git clone https://github.com/mossmann/hackrf.git
-6.	Move to the hackrf/host directory   $ cd hackrf/host
+6.	Move to the hackrf/host directory   
+    - $ cd hackrf/host
 7.	Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
         - $ mkdir build && cd build
         - $ cmake ../ -DINSTALL_UDEV_RULES=ON
@@ -31,7 +32,8 @@ Optional Settings
     - $ make
     - $ sudo make install
     - $ sudo ldconfig
-9.	Test hackrf works:  $hackrf_info
+9.	Test hackrf works:  
+    - $hackrf_info
 10.	Audacity install
     - $sudo apt-get install audacity –y
     - To run: $audacity
@@ -48,15 +50,11 @@ Optional Settings
 14.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name /home/user = /home/yourUser
 15.	Create Alarm signal processing directory structure, on an external hard drive (if used)
 ##EXTERNAL Hard Drive
-/media/user/SDRAlarmSignals/conf
-
-/media/user/SDRAlarmSignals/Captured
-
-/media/user/AlarmGnuradioFiles/AlarmSignals/logs
-
-/media/user/GnuradioFiles/AlarmSignals/Original
-
-/media/user/GnuradioFiles/AlarmSignals/Processed
+**/media/user/SDRAlarmSignals/conf
+**/media/user/SDRAlarmSignals/Captured
+**/media/user/AlarmGnuradioFiles/AlarmSignals/logs
+**/media/user/GnuradioFiles/AlarmSignals/Original
+**/media/user/GnuradioFiles/AlarmSignals/Processed
 16.	Test the capture_signals.py and process alarm python scripts.
 - chmod them all
 - scripts to contain #!usr/bin/env python or #!/bin/bash 
@@ -72,25 +70,17 @@ Optional Settings
 18.	Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
 - $nano stop_run_capture_flowgraphs.sh
 
-\#!/ bin/bash
+**\#!/ bin/bash
+**killall run_capture_flowgraph_433920000_external
+**killall run_capture_flowgraph_433920000_local
+**killall run_capture_flowgraph_434320000_external
+**killall run_capture_flowgraph_434320000_local
+**killall timeout 30s
+**killall python puresignal_435720000MHz.py
+**killall python puresignal_435720000MHz_external.py
+**killall python puresignal_434320000MHz.py
+**killall python puresignal_434320000MHz_external.py
 
-killall run_capture_flowgraph_433920000_external
-
-killall run_capture_flowgraph_433920000_local
-
-killall run_capture_flowgraph_434320000_external
-
-killall run_capture_flowgraph_434320000_local
-
-killall timeout 30s
-
-killall python puresignal_435720000MHz.py
-
-killall python puresignal_435720000MHz_external.py
-
-killall python puresignal_434320000MHz.py
-
-killall python puresignal_434320000MHz_external.py
 - Attach it to a keyboard shortcut (Keyboard - Keyboard shortcuts - bash /home/bear/AlarmGnuRadioFiles/stop_run_capture_flowgraphs.sh)
 - $chmod u+x stop_run_capture_flowgraphs.sh
 - Assign Control+Alt+X shortcut.
