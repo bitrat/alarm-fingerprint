@@ -62,4 +62,5 @@ Captured signals files are processed from the Captured directory. If an alarm si
 #TO DO
 * SIGINT - Process date and time of the peripherals and keyfobs to track occupants movements/presence
 * REM3 keyfob signal is detected - but process further to determine actual State - Lock, Unlock etc (like other alarm peripherals)
-* Transform the .doc files (that currently have to be downloaded to be read) into proper text with graphics to be displayed here. 
+* Transform the .doc files (that currently have to be downloaded to be read) into proper text with graphics to be displayed here.
+* Rewrite this POC tool and Package it properly (will probably never happen)
