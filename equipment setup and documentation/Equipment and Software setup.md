@@ -35,22 +35,24 @@ Optional Settings
     - $ sudo apt-get install libboost-program-options-dev -y
     - $ sudo apt-get install swig -y
 5.	$ git clone https://github.com/mossmann/hackrf.git
-6.	Move to the hackrf/host directory   
+
+ Move to the hackrf/host directory   
     - $ cd hackrf/host
-7.	Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
+
+ Create the build directory, move to it, and use Cmake (installed earlier) to create the Makefiles required for building.
         - $ mkdir build && cd build
         - $ cmake ../ -DINSTALL_UDEV_RULES=ON
-8.	Build and Install.
+ Build and Install.
     - $ make
     - $ sudo make install
     - $ sudo ldconfig
-9.	Test hackrf works:  
+ Test hackrf works:  
     - $hackrf_info
-10.	Audacity install
+6.	Audacity install
     - $sudo apt-get install audacity –y
     - To run: $audacity
-11.	Check python installed – yes 
-12.	Install Don Weber’s python bitarray 0.8.1 and then grc_bit_converter.py
+7.	Check python installed – yes 
+8.	Install Don Weber’s python bitarray 0.8.1 and then grc_bit_converter.py
     - $wget https://pypi.python.org/packages/source/b/bitarray/bitarray-0.8.1.tar.gz
     - $ tar xzf bitarray-0.8.1.tar.gz
     - $ cd bitarray-0.8.1
@@ -58,9 +60,9 @@ Optional Settings
     - https://github.com/cutaway/grc_bit_converter 
     - $git clone https://github.com/cutaway/grc_bit_converter.git
 - Edited the grc_bit_converter.py file to write out a .txt file with hex values (which then gets processed further by process_signals.py file).
-13.	Clone this repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
-14.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name /home/user = /home/yourUser
-15.	Create Alarm signal processing directory structure, on an external hard drive (if used)
+9.	Clone this repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
+10.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name /home/user = /home/yourUser
+11.	Create Alarm signal processing directory structure, on an external hard drive (if used)
 
 ##EXTERNAL Hard Drive
 
