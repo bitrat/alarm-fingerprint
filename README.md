@@ -20,7 +20,7 @@ These .cap files must be placed in the Captured folder (within the home\user\ala
 
 ## GENERAL DESCRIPTION FOR RUNNING THE CODE
 
-(Refer to Equipment setup documentation for how to glue this all together = hardware + software)
+(Refer to [Equipment setup documentation](https://github.com/bitrat/alarm-fingerprint/blob/master/equipment%20setup%20and%20documentation/Equipment%20and%20Software%20setup.md) for how to glue this all together = hardware + software)
 
 The scripts are run within the AlarmGnuradioFiles folder in your user directory. Replace "user", in the scripts, with your home directory username. Any external harddrive is referenced as /media/user in the scripts, change to your path/username.
   
