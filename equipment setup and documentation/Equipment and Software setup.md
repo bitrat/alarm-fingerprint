@@ -17,19 +17,6 @@
 
 3.	Gnuradio software install - follow instructions at https://github.com/mossmann/hackrf/wiki/Operating-System-Tips Installing GnuRadio manually.
 
-##REMOVE
-    https://github.com/mossmann/hackrf/wiki/Installing-gnuradio-on-Ubuntu-14.04-with-the-packaging-manager 
-
-    $sudo add-apt-repository ppa:gqrx/releases
-    
-    $sudo apt-get update
-    
-    $sudo apt-get upgrade -y
-    
-    $sudo apt-get install gqrx gnuradio gr-osmosdr –y
-
-##REMOVE END
-
 To run: $gnuradio-companion
 
 (Note: If gr-osmosdr Block missing in GnuRadio after install – reinstall it. Install gnuradio-dev. Install libhackrf-dev. Install gr-osmosdr to get osmocom source in gnuradio-companion (install 2 dependencies))
