@@ -6,12 +6,12 @@ import subprocess
 import sys
 import itertools
 
-runCapture_433920000_local = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_433920000_local')
-runCapture_433920000_external = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_433920000_external')
-runCapture_433420000_local = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_434320000_local')
-runCapture_433420000_external = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_434320000_external')
-runCapture_319500000_local = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_319500000_local')
-runCapture_319500000_external = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles', './run_capture_flowgraph_319500000_external')
+runCapture_433920000_local = os.path.join(os.path.sep, os.environ['HOME'], 'alarm-fingerprint', 'AlarmGnuRadioFiles', './run_capture_flowgraph_433920000_local')
+runCapture_433920000_external = os.path.join(os.path.sep, os.environ['HOME'], 'alarm-fingerprint', 'AlarmGnuRadioFiles', './run_capture_flowgraph_433920000_external')
+runCapture_433420000_local = os.path.join(os.path.sep, os.environ['HOME'], 'alarm-fingerprint', 'AlarmGnuRadioFiles', './run_capture_flowgraph_434320000_local')
+runCapture_433420000_external = os.path.join(os.path.sep, os.environ['HOME'], 'alarm-fingerprint', 'AlarmGnuRadioFiles', './run_capture_flowgraph_434320000_external')
+runCapture_319500000_local = os.path.join(os.path.sep, os.environ['HOME'], 'alarm-fingerprint', 'AlarmGnuRadioFiles', './run_capture_flowgraph_319500000_local')
+runCapture_319500000_external = os.path.join(os.path.sep, os.environ['HOME'], 'alarm-fingerprint', 'AlarmGnuRadioFiles', './run_capture_flowgraph_319500000_external')
 
 def disk_check(diskdir):
    # Before processing any files, check for sufficient space > 40 GB 
@@ -67,7 +67,7 @@ while True:
 
     if select_drives == 1:
         # Before running any processing - check diskspace > 40 GB (adjust if needed)
-        disk = os.path.join(os.path.sep, os.environ['HOME'], 'AlarmGnuRadioFiles')
+        disk = os.path.join(os.path.sep, os.environ['HOME'], 'alarm-fingerprint','AlarmGnuRadioFiles')
         disk_space = disk_check(disk)
         if disk_space < 40000000:
             print("\n"+"--------------------------------------------------------------------------")

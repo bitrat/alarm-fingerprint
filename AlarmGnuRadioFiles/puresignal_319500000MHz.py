@@ -32,7 +32,7 @@ class top_block(grc_wxgui.top_block_gui):
         self.freq = freq = 319.5e6
 
         # Added
-        self.pathprefix = pathprefix = "/home/user/AlarmGnuRadioFiles/Captured/"
+        self.pathprefix = pathprefix = "/home/user/alarm-fingerprint/AlarmGnuRadioFiles/Captured/"
 
         ##################################################
         # Blocks

@@ -45,8 +45,8 @@ class top_block(grc_wxgui.top_block_gui):
 
         # Changed
         # Changed from the original Yale_FileInput_BinaryOutput GNURadio Flowgraph export
-        self.initpathprefix = initpathprefix = "/home/user/AlarmGnuRadioFiles/"
-        self.pathprefix = pathprefix = "/home/user/AlarmGnuRadioFiles/Captured/"
+        self.initpathprefix = initpathprefix = "/home/user/alarm-fingerprint/AlarmGnuRadioFiles/"
+        self.pathprefix = pathprefix = "/home/user/alarm-fingerprint/AlarmGnuRadioFiles/Captured/"
         # Same as external hard drive processing code variables
         self.finput = finput = initpathprefix+"Capture_init.cap"
         self.foutput = foutput = pathprefix+finput.rsplit("/", 1)[1] 
@@ -143,7 +143,7 @@ class top_block(grc_wxgui.top_block_gui):
     def set_finput(self, finput):
         self.finput = finput
         # Changed
-        self.set_foutput("/home/user/AlarmGnuRadioFiles/Captured/"+finput.rsplit("/", 1)[1])
+        self.set_foutput("/home/user/alarm-fingerprint/AlarmGnuRadioFiles/Captured/"+finput.rsplit("/", 1)[1])
         #
         self.blocks_file_source_0.open(self.finput, False)
 
@@ -251,7 +251,7 @@ if __name__ == '__main__':
         const = float(sys.argv[1])
         finput = sys.argv[2]
     # Changed - local or external hard drive
-    foutput = "/home/user/AlarmGnuRadioFiles/Captured/"+finput.rsplit("/", 1)[1]
+    foutput = "/home/user/alarm-fingerprint/AlarmGnuRadioFiles/Captured/"+finput.rsplit("/", 1)[1]
     tb = top_block()
     tb.Start(True)
     tb.set_addconst(const)
