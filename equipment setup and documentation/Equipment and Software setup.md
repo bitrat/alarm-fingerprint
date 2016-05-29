@@ -81,7 +81,7 @@
 9.	Clone repo  $ git clone https://github.com/bitrat/alarm-fingerprint.git 
 10.	Change all references to "user" (directory and within .grc and .py files), to your ubuntu user name 
     
-    /home/user = /home/yourUser in the following files:
+    /home/user = /home/yourUser in the following directory files (home/yourUser/alarm-fingerprint/AlarmGnuRadioFiles):
 
     - Bosch3000_FileInput_To_BinarySlice_Local_and_External.py
     - Bosch3000_FileInput_To_BinarySlice_Local_only.py
@@ -98,6 +98,10 @@
     - Spectra_FileInput_To_BinarySlice_Local_only.py
     - Yale_FileInput_To_BinarySlice_Local_and_External.py
     - Yale_FileInput_To_BinarySlice_Local_only.py
+    
+    And also change home/yourUser/alarm-fingerprint/AlarmGnuRadioFiles/conf files:
+    - logging.conf
+    - logging_file.conf
 
 11.	Create Alarm signal processing directory structure, on an external hard drive (if used)
 
