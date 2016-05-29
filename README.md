@@ -3,9 +3,9 @@ code to blackbox fingerprint wireless alarm device signals
 
 Being able to capture and replay wireless alarm signals can easily be done in a Lab environment, where it is known what is being triggered and when.
 
-In a field/real world setting however, this is not so easy. A way of being able to capture signals, then identify if they are actually signals of interest, and store only those that are really wireless alarm peripheral signals, is necessary.
+In a field/real world setting however, this is not so easy. A way of being able to capture signals, then identify if they are actually signals of interest, and store only those that are really wireless alarm peripheral signals that are useful for replay, is necessary.
 
-This project contains proof of concept code, which automates blackbox wireless alarm signal identification and storage.
+This project contains proof of concept code, which automates blackbox wireless alarm signal identification and storage (useful for  later replay).
 
 ## Alarm components:
 - Spectra 4000 with both RX1 and RTX3 wireless modules, DCT2 reeds, PMD75 PIR, REM15 and REM3 keyfobs.
