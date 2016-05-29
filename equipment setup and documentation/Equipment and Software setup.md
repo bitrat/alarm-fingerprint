@@ -130,12 +130,14 @@
     
     time.sleep(5)
     
-##Stop Flowgraphs Manually (fixes a bug with tstop)
+##Stop Capturing signals Manually 
 
-Because normal Control+Z, Control+C in terminal does not kill the run_capture_flowgraphs script when it’s running:
+Because normal Control+Z, Control+C in terminal does not seem to kill the run_capture_flowgraphs script when it’s running:
 
-- Attach stop_run_capture_flowgraphs.sh to a keyboard shortcut: (SYstem Settings - Keyboard - Keyboard shortcuts - bash /home/bear/AlarmGnuRadioFiles/stop_run_capture_flowgraphs.sh)
-- Assign Control+Alt+X shortcut.
+- Assign a Custom Keyboard shortcut to stop_run_capture_flowgraphs.sh: (System Settings - Keyboard - Keyboard shortcuts - Custom Shortcuts)
+- Name : stopCapture
+- Command: /home/yourUser/alarm-fingerprint/AlarmGnuRadioFiles/stop__run_capture_flowgraphs.sh
+- Assign Control+Alt+X as the shortcut.
 - => Pressing Control+Alt+X when capturing signals stops the capture loop and flowgraph.
 
 ##Test the capture_signals.py and process alarm python scripts
