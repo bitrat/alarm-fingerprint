@@ -53,7 +53,7 @@ def print_data(name, data = ''):
             tstring[e] = ''.join(tmp)
 # Process the DSC Files you processed out of the Gnuradio flowgraph
     fhexname = name+'.txt'
-    #print "Hex Filename: ", fhexname
+    #print ("Hex Filename: ", fhexname)
     try: 
         with open(fhexname,"w") as text_out:
             text = ''.join(tstring)
@@ -64,19 +64,19 @@ def print_data(name, data = ''):
 
 # Help
 def usage():
-    print "bit_convert.py:  This script will take the demodulated wave output that has"
-    print "                 been processed through gnuradio-companion's Clock Recovery MM,"
-    print "                 Binary Slicer, and Correlate Access Code. Thes blocks generate"
-    print "                 binary output where ones are 00000001 and zeros are 00000000."
-    print "                 These must be combined to create a normal byte."
-    print ""
-    print "-f <file>:       Input file (required)"
-    print "-p <size>:       Size of the packet (defaults to 250)"
-    print "-s <string>:     Search for a string. This will also supress packet printing."
-    print "-i:              Invert the bits of the byte. This may be necessary if high"
-    print "                 actually represents a 0 instead of a 1 and visa versa."
-    print "-c:              Data is coded. Therefore look for 2's and 3's as packet markers."
-    print "-b <number>:     Bypass this number of BITS. NOTE: only used for non-coded parsing."
+    print ("bit_convert.py:  This script will take the demodulated wave output that has")
+    print ("                 been processed through gnuradio-companion's Clock Recovery MM,")
+    print ("                 Binary Slicer, and Correlate Access Code. Thes blocks generate")
+    print ("                 binary output where ones are 00000001 and zeros are 00000000.")
+    print ("                 These must be combined to create a normal byte.")
+    print ("")
+    print ("-f <file>:       Input file (required)")
+    print ("-p <size>:       Size of the packet (defaults to 250)")
+    print ("-s <string>:     Search for a string. This will also supress packet printing.")
+    print ("-i:              Invert the bits of the byte. This may be necessary if high")
+    print ("                 actually represents a 0 instead of a 1 and visa versa.")
+    print ("-c:              Data is coded. Therefore look for 2's and 3's as packet markers.")
+    print ("-b <number>:     Bypass this number of BITS. NOTE: only used for non-coded parsing.")
     sys.exit()
 
 def set_values(name):
@@ -114,7 +114,7 @@ def set_values(name):
             search = True
             sdata = sys.argv.pop(1)
         if op == '-i':
-            print "Inverting data."
+            print ("Inverting data.")
             invert = True
         if op == '-p':
             max_packet = int(sys.argv.pop(1))
@@ -123,7 +123,7 @@ def set_values(name):
         if op == '-b':
             bypass = int(sys.argv.pop(1))
         if op not in ops:
-#            print "Unknown option:"
+#            print ("Unknown option:")
             bitconvert_logger.debug("Unknown option:")
             usage()
 
@@ -131,7 +131,7 @@ def set_values(name):
     try:
         ind = open(inf,'r').read()
     except:
-        print "Error accessing file:",inf
+        print ("Error accessing file:",inf)
         usage()
 
 # If the byte is 2 or 3 then we have a packet.
@@ -153,10 +153,10 @@ def set_values(name):
                 packets.append(ind[cnt:(cnt+1)+(max_packet*8)])
 
 # Process all packets
-#    print "Starting Packet Parsing."
+#    print ("Starting Packet Parsing.")
     #bitconvert_logger.debug("Starting Packet Parsing.")
     for packet in packets:
-    #print "\nNew Packet:"
+    #print ("\nNew Packet:")
     # Process each packet by building an 8 bit string that represents a byte
         temp_byte = ''
         new_byte = ''
@@ -188,7 +188,7 @@ def set_values(name):
         indata = ''.join(dpacket)
         if search:
             if re.search(sdata,indata):
-            #print "\nFound it!!"
+            #print ("\nFound it!!")
                 dpackets.append(indata)
         else:
             dpackets.append(indata)

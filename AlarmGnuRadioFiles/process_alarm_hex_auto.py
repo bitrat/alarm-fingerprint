@@ -17,14 +17,14 @@ def open_hex_file(hexname, fdir, capdir, processdir, origdir, select_process_mod
         with open(hexname) as fp:
             indata = fp.read()
     except IOError:
-        print "\nThe file you are trying to open doesn't exist : \n",hexname
-        print "\n"
+        print ("\nThe file you are trying to open doesn't exist : \n",hexname)
+        print ("\n")
         sys.exit()
 
     try:
         alarmPreambleSynchDSC, alarmPreambleSynchSpectra, alarmPreambleSynchYale, alarmPreambleSynchBosch, alarmPreambleSynchIQPanel = choose_alarm()
     except Exception as error:
-        print "Hex File could not be processed. Are you defining and returning the alarmPreamble ?"
+        print ("Hex File could not be processed. Are you defining and returning the alarmPreamble ?")
         sys.exit()    
 
     alarm_transmit_packets(alarmPreambleSynchDSC, alarmPreambleSynchSpectra, alarmPreambleSynchYale, alarmPreambleSynchBosch, alarmPreambleSynchIQPanel, indata, hexname, fdir, capdir, processdir, origdir, select_process_mode, count_waterfall, alarm_num, alarmType) 

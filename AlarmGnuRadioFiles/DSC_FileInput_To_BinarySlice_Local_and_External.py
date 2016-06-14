@@ -234,7 +234,7 @@ if __name__ == '__main__':
 #            x11 = ctypes.cdll.LoadLibrary('libX11.so')
 #            x11.XInitThreads()
 #        except:
-#            print "Warning: failed to XInitThreads()"
+#            print ("Warning: failed to XInitThreads()")
 #    parser = OptionParser(option_class=eng_option, usage="%prog: [options]")
 #    (options, args) = parser.parse_args()
     if (len(sys.argv) < 3):
@@ -244,16 +244,12 @@ if __name__ == '__main__':
     else:
         const = float(sys.argv[1])
         finput = sys.argv[2]
-#   print "Type of const:", type(const)
-#    print "Type of fname:", type(finput)
-#    print "const:", const
     foutput = "/media/user/SDRAlarmSignals/Captured/"+finput.rsplit("/", 1)[1]
-    #print "foutput:", foutput
     tb = top_block()
     tb.Start(True)
     tb.set_addconst(const)
     tb.set_finput(finput)
-    print "Processing file ....Add Const is "+str(const)+"\n"
-    print "Processing file "+str(finput)+"\n"
+    print ("Processing file ....Add Const is "+str(const)+"\n")
+    print ("Processing file "+str(finput)+"\n")
     time.sleep(30)
     tb.stop()

@@ -250,7 +250,7 @@ if __name__ == '__main__':
     tb.Start(True)
     tb.set_addconst(const)
     tb.set_finput(finput)
-    print "Processing file ....Add Const is "+str(const)+"\n"
-    print "Processing file "+str(finput)+"\n"
+    print ("Processing file ....Add Const is "+str(const)+"\n")
+    print ("Processing file "+str(finput)+"\n")
     time.sleep(30)
     tb.stop()

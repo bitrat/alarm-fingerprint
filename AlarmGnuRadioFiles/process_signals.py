@@ -24,7 +24,7 @@ def check_for_files(endchk, startchk, process, select_process_mode, count_waterf
                     try:
                         os.remove(chkname_abs)
                     except OSError, e:
-                        print "Failed to remove :", chkname_abs
+                        print ("Failed to remove :", chkname_abs)
                 elif process == "alarmlog":
                     process_alarm_hex_auto.open_hex_file(chkname_abs, fdir, capdir, processdir, origdir, select_process_mode, count_waterfall, alarm_num, alarmType)
 
@@ -41,7 +41,7 @@ def process_cap_files(fdir, capdir, processdir, flowgraph, origdir, alarmType, s
         capfile_abs.sort(key=lambda x: os.path.getmtime(x))
 
         if capfile_abs:
-            print "Capture file being processed is: ",capfile_abs[0]   
+            print ("Capture file being processed is: ",capfile_abs[0])  
        
             if (select_process_mode == 3):
 
@@ -72,7 +72,7 @@ def process_cap_files(fdir, capdir, processdir, flowgraph, origdir, alarmType, s
             try: 
                 subprocess.call([runScript, "/", flowgraph, capfile_abs[0], alarmType], shell=False)
             except (subprocess.CalledProcessError,KeyboardInterrupt) as e:
-                print "\nrun_addconst_flowgraphs program interrupted ... ", e
+                print ("\nrun_addconst_flowgraphs program interrupted ... ", e)
                 print ("\nrun_addconst_flowgraphs program exited now ...\n")
                 quit(0)
 
@@ -86,12 +86,12 @@ def process_cap_files(fdir, capdir, processdir, flowgraph, origdir, alarmType, s
                 try:
                     os.remove(os.path.join(capdir,name))
                 except OSError, e:
-                    print "Failed to remove : ", os.path.join(capdir,name)
+                    print ("Failed to remove : ", os.path.join(capdir,name))
             elif name.startswith("Capture_init.cap"):
                 try:
                     os.remove(os.path.join(capdir,name))
                 except OSError, e:
-                    print "Failed to remove : ", os.path.join(capdir,name)
+                    print ("Failed to remove : ", os.path.join(capdir,name))
   
     # Process each lot of captured, then offset, Binary sliced .dat and .dat.txt files
     check_for_files(".dat", "Capture", "bitconvert", select_process_mode, count_waterfall, alarm_num, alarmType)
@@ -109,11 +109,11 @@ def disk_check(fdir):
     diskspace = int(out[3])
 
     if diskspace < 40000000:
-       print "\n"
-       print "WARNING: Not enough local disk space."
-       print "Under 40 GB on local hard drive."
-       print "Adjust this 40 GB limit, or create some space."
-       print "\n"
+       print ("\n")
+       print ("WARNING: Not enough local disk space.")
+       print ("Under 40 GB on local hard drive.")
+       print ("Adjust this 40 GB limit, or create some space.")
+       print ("\n")
     return diskspace
 
 def drive_select_menu(driveSET):
@@ -152,7 +152,7 @@ def logging_setup():
     try:
         logging.config.fileConfig(fdir+'/conf/logging_console.conf')
     except Exception as error:
-        print "Hard Drive unavailable."
+        print ("Hard Drive unavailable.")
         sys.exit()
 
 def option_select(option):
@@ -321,20 +321,20 @@ def process(fdir, capdir, processdir, flowgraph, origdir, alarmType, select_proc
 
         if (capnum > 1) :
             # Start processing captured signal .cap files
-            print "\n"
-            print "Process Signal as Alarm Type: ", alarmType
+            print ("\n")
+            print ("Process Signal as Alarm Type: ", alarmType)
             if select_process_mode == 1:
-                print "Process Mode: SINGLE ALARM MODE"
+                print ("Process Mode: SINGLE ALARM MODE")
             elif select_process_mode == 2:
-                print "Process Mode: CPU MODE"
+                print ("Process Mode: CPU MODE")
             elif select_process_mode == 3:
-                print "Process Mode: WATERFALL MODE"
+                print ("Process Mode: WATERFALL MODE")
             if select_drives == 1:
-                print "Drive used: Local "
+                print ("Drive used: Local ")
             elif select_drives == 2:
-                print "Drive used: External"
+                print ("Drive used: External")
 
-            print "\n%s capture files remain in directory %s, ready to be processed."% (capnum, capdir)
+            print ("\n%s capture files remain in directory %s, ready to be processed."% (capnum, capdir))
 
             # Process files
             process_cap_files(fdir, capdir, processdir, flowgraph, origdir, alarmType, select_process_mode, count_waterfall, alarm_num)
@@ -378,7 +378,7 @@ print (30 * "-")
 # Add additional Alarms to the end of this list
 alarmSET = ["DSCAlexxor", "Spectra4000", "YaleStandard", "Bosch3000", "IQPanel"]
 alarm_num = len(alarmSET)
-print alarm_num
+print (alarm_num)
 alarmSETcycle = itertools.cycle(alarmSET)
 
 while True:

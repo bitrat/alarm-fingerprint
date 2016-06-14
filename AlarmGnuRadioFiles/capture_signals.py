@@ -23,11 +23,11 @@ def disk_check(diskdir):
     diskspace = int(out[3])
 
     if diskspace < 40000000:
-       print "\n"
-       print "WARNING: Not enough local disk space."
-       print "Under 40 GB on local hard drive."
-       print "Adjust this 40 GB limit, or create some space."
-       print "\n"
+       print ("\n")
+       print ("WARNING: Not enough local disk space.")
+       print ("Under 40 GB on local hard drive.")
+       print ("Adjust this 40 GB limit, or create some space.")
+       print ("\n")
     return diskspace
 
 def option_select(option):
@@ -40,9 +40,9 @@ def option_select(option):
     return select_option
 
 def invalid_option_select():
-        print("\n"+"--------------------------------------------------------------------------")
+        print ("\n"+"--------------------------------------------------------------------------")
         print ("Invalid option. Try again ....")
-        print("--------------------------------------------------------------------------"+"\n")
+        print ("--------------------------------------------------------------------------"+"\n")
         sys.exit()
 
 print (30 * "-")
@@ -82,21 +82,21 @@ while True:
                 try: 
                     subprocess.call([runCapture_433920000_local], shell=False)
                 except (subprocess.CalledProcessError,KeyboardInterrupt) as e:
-                    print "\nLocal Capture at 433920000 Hz ... ", e
+                    print ("\nLocal Capture at 433920000 Hz ... ", e)
                     quit(0)
             elif select_freq == 2:
                 # Capture at Selected Frequency
                 try: 
                     subprocess.call([runCapture_433420000_local], shell=False)
                 except (subprocess.CalledProcessError,KeyboardInterrupt) as e:
-                    print "\nLocal Capture at 433420000 Hz ... ", e
+                    print ("\nLocal Capture at 433420000 Hz ... ", e)
                     quit(0)
             elif select_freq == 3:
                 # Capture at Selected Frequency
                 try: 
                     subprocess.call([runCapture_319500000_local], shell=False)
                 except (subprocess.CalledProcessError,KeyboardInterrupt) as e:
-                    print "\nLocal Capture at 319500000 Hz ... ", e
+                    print ("\nLocal Capture at 319500000 Hz ... ", e)
                     quit(0)
             elif select_freq == 4:
                 print("\n"+"--------------------------------------------------------------------------")
@@ -123,21 +123,21 @@ while True:
                     try: 
                         subprocess.call([runCapture_433920000_external], shell=False)
                     except (subprocess.CalledProcessError,KeyboardInterrupt) as e:
-                        print "\nExternal drive Capture at 433920000 Hz ... ", e
+                        print ("\nExternal drive Capture at 433920000 Hz ... ", e)
                         quit(0)
                 elif select_freq == 2:
                     # Capture at Selected Frequency
                     try: 
                         subprocess.call([runCapture_433420000_external], shell=False)
                     except (subprocess.CalledProcessError,KeyboardInterrupt) as e:
-                        print "\nExternal drive Capture at 433420000 Hz ... ", e
+                        print ("\nExternal drive Capture at 433420000 Hz ... ", e)
                         quit(0)
                 elif select_freq == 3:
                     # Capture at Selected Frequency
                     try: 
                         subprocess.call([runCapture_319500000_external], shell=False)
                     except (subprocess.CalledProcessError,KeyboardInterrupt) as e:
-                        print "\nExternal drive Capture at 319500000 Hz ... ", e
+                        print ("\nExternal drive Capture at 319500000 Hz ... ", e)
                         quit(0)
                 elif select_freq == 4:
                     print("\n"+"--------------------------------------------------------------------------")

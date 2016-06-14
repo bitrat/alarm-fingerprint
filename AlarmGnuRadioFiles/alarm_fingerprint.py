@@ -563,7 +563,7 @@ def extract_bosch_packet(hexPacketData):
 
 def extract_iqpanel_packet(hexPacketData):
     # Split IQPanel signal into the 8 separate signal parts
-    # print hexPacketData
+    # print(hexPacketData)
     iqpanel_bits_list = split_bits(hexPacketData, ['00000000','1', '3','7', '8','c', 'e','0f', 'f0'])
     iqpanel_data_list = convert_bits_to_iqpanel_data(iqpanel_bits_list)
 
@@ -849,7 +849,7 @@ def device_status(deviceData, alarmIdentified, hexPacketData):
 
     elif (alarmIdentified == "IQPanel"): 
         iqpanel_signal_list = extract_iqpanel_packet(hexPacketData)
-        # print iqpanel_signal_list
+        # print(iqpanel_signal_list)
         if iqpanel_signal_list:
             for index, elem in enumerate(iqpanel_signal_list):
                 if index <= len(iqpanel_signal_list):
