@@ -1,5 +1,5 @@
 # alarm-fingerprint
-code to blackbox fingerprint wireless alarm device signals
+code to blackbox fingerprint wireless alarm device signals, and store identified signals for replay attacks.
 
 Being able to capture and replay wireless alarm signals can easily be done in a Lab environment, where it is known what is being triggered and when.
 
