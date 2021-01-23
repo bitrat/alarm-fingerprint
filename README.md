@@ -14,8 +14,6 @@ This project contains proof of concept code, which automates blackbox wireless a
 - Yale standard wireless alarm system.
 - IQPanel alarm system (Cinch Reeds and IQMotion PIRs) - Marketed under other names (with fairly Hostile to research T&C's).
 
-Test alarm signals (to verify processing code has been setup up correctly, can be downloaded from https://drive.google.com/folderview?id=0B8gCZryoEOWIZDBsbVFVZF93dW8&usp=sharing ).
-
 These .cap files must be placed in the Captured folder (within the home\user\alarm-fingerprint\AlarmGnuRadioFiles Folder structure)
 
 ## GENERAL DESCRIPTION FOR RUNNING THE CODE
